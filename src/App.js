@@ -15,7 +15,7 @@ import scannedPrice from "./Components/scannedPrice";
 import terminosYCond from "./Components/terminosYCond";
 import Win from "./Components/win";
 import ContactInfo from "./Components/ContactInfo";
-import ActivateCamera from "./Components/activateCamera";
+import QrReader from "./Components/qrReader";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
       <Route path="/checkError" component={scannedError} />
       <Route path="/Win" component={Win} />
       <Route path="/contact" component={ContactInfo} />
-      <Route path="/ActivateCamera" component={ActivateCamera} />
+      <Route path="/ActivateCamera" component={QrReader} />
       
     </Router>
   );
