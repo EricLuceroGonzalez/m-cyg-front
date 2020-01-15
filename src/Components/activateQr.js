@@ -53,7 +53,7 @@ class ActivateQr extends Component {
 
           <div
             className="container-activate-camera-btn m-t-25"
-            style={{ margin: "45% auto" }}
+            style={{ margin: "45% auto", alignContent: 'center'}}
           >
             <div
               className="col-12 mb-3"
@@ -73,9 +73,11 @@ class ActivateQr extends Component {
               </div>
             </div>
 
-            <Link to={'/ActivateCamera'}>
+            <Link 
+            className="mr-auto ml-auto"
+            to={'/ActivateCamera'}>
               <Button
-                className="activate-camera-btn text-question"
+                className="activate-camera-btn text-question mr-auto ml-auto"
                 onClick={this.sendFormData}
               >
                 Activar camara
