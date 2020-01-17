@@ -77,7 +77,7 @@ class ActivateQr extends Component {
             className="mr-auto ml-auto"
             to={'/ActivateCamera'}>
               <Button
-                className="activate-camera-btn text-question mr-auto ml-auto"
+                className="activate-camera-btn text-o mr-auto ml-auto"
                 onClick={this.sendFormData}
               >
                 Activar camara

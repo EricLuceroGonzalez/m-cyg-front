@@ -15,6 +15,9 @@ class codeQrReader extends Component {
   };
   handleError = err => {
     console.error(err);
+    this.setState({
+      result: err
+    });
   };
   render() {
     return (

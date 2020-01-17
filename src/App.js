@@ -23,6 +23,7 @@ function App() {
       <Nav></Nav>
       <Route exact path="/" component={ScannedCode} />
       <Route path="/aComment" component={Thumbs} />
+      <Route path="/scanned" component={ScannedCodeCheck} />
       <Route path="/scanned1" component={ScannedCodeCheck} />
       <Route path="/scanned2" component={ScannedCodeInput} />
       <Route path="/activate" component={ActivateQr} />
@@ -32,12 +33,6 @@ function App() {
       <Route path="/Win" component={Win} />
       <Route path="/contact" component={ContactInfo} />
       <Route path="/ActivateCamera" component={QrReader} />
-      <Route
-        path="/scanned"
-        component={() => {
-          window.location.href = "https://boring-wright-d5a735.netlify.com/";
-          return null;
-        }}
       />
     </Router>
   );
