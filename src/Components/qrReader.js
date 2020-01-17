@@ -7,6 +7,7 @@ class codeQrReader extends Component {
   };
   handleScan = data => {
     if (data) {
+      window.location.href = data;
       this.setState({
         result: data
       });
