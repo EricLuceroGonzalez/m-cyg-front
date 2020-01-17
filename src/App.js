@@ -23,6 +23,7 @@ function App() {
       <Nav></Nav>
       <Route exact path="/" component={ScannedCode} />
       <Route path="/aComment" component={Thumbs} />
+      <Route path="/scanned" component={ScannedCodeCheck} />
       <Route path="/scanned1" component={ScannedCodeCheck} />
       <Route path="/scanned2" component={ScannedCodeInput} />
       <Route path="/activate" component={ActivateQr} />
