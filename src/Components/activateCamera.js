@@ -9,6 +9,7 @@ class ActivateCamera extends Component {
         console.log("handleCameraStart");
       };
       handleTakePhoto = (dataUri) => {
+        window.location = dataUri
         // Do stuff with the photo...
         console.log('takePhoto');
         console.log(dataUri);
