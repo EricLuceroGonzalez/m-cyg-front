@@ -43,7 +43,7 @@ class ActivateQr extends Component {
           //   style={allBg}
           style={formBg}
         >
-          <div className="col-8 mt-4 ml-auto mr-auto">
+          <div className="col-10 mt-4 ml-auto mr-auto">
             <CardImg
               alt="Card image cap....."
               width="75%"
@@ -87,7 +87,7 @@ class ActivateQr extends Component {
 
           <Container className="col-12 container-fluid">
             <p
-              style={{ fontSize: "1.4em" }}
+              style={{ fontSize: "1.25em" }}
               className="text-b d-flex justify-content-center
               text-question"
             >
@@ -101,7 +101,7 @@ class ActivateQr extends Component {
                 2<p>Escanea el codigo QR en pantalla</p>
               </div>
               <div className="steps-div text-question">
-                3<p>Llena el formulario comenta y gana</p>
+                3<p>Llena el formulario y gana</p>
               </div>
             </div>
           </Container>

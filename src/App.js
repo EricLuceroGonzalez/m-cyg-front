@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <Nav></Nav>
-      <Route exact path="/" component={ScannedCode} />
+      <Route exact path="/" component={ScannedCodeCheck} />
       <Route path="/aComment" component={Thumbs} />
       <Route path="/scanned" component={ScannedCodeCheck} />
       <Route path="/scanned1" component={ScannedCodeCheck} />
