@@ -337,8 +337,8 @@ class ScannedCodeInput extends Component {
             <FormGroup>
               <Label>
                 <div style={{ margin: "0px auto", textAlign: "center" }}>
-                  <div className=" text-question">Comparte tu experiencia</div>
-                  <div className=" text-question">dejanos un comentario</div>
+                  <div className=" text-title-orange">Comparte tu experiencia</div>
+                  <div className=" text-title-orange">Dejanos un comentario</div>
                 </div>
               </Label>
               <div className="wrap-input100datos mt-4 mb-4">

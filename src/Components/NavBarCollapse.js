@@ -100,11 +100,6 @@ class Nav extends Component {
                   scanned1
                 </Link>
               </li>
-              <li>
-                <Link to={"/scanned2"} style={linksNavs}>
-                  scanned2
-                </Link>
-              </li>
             </ul>
             <ul className="navbar-nav mr-auto">
               <li>

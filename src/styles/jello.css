@@ -3,6 +3,14 @@
   animation: jello-horizontal 0.9s both;
 }
 
+.itsok{
+  background-color: green;
+}
+
+.itsnotok{
+  background-color: red;
+}
+
 .jello-perma {
   -webkit-animation: jello-horizontal 1.9s both;
   animation: jello-horizontal 1.9s both;

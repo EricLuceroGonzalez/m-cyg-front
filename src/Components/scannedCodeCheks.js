@@ -5,6 +5,7 @@ import {
   Button,
   FormGroup
 } from "reactstrap";
+import { useParams} from "react-router";
 import { Link } from "react-router-dom";
 import qrScanned from "../media/logo00.png";
 import CheckItem from "./CheckItem";
@@ -16,7 +17,8 @@ const formBg = {
 };
 class ScannedCodeCheck extends Component {
   state = {
-    formClassName: ""
+    formClassName: "",
+    id: useParams()
   };
 
   checkBoxToggle = e => {
@@ -99,7 +101,7 @@ class ScannedCodeCheck extends Component {
         >
           <div className="mt-5 mb-3 justify-content-center text-question">
             <h3 style={{ fontSize: "1.45em", textAlign: "center" }}>
-              Como le parecio nuestra atencion?
+              Como le parecio nuestra atencion? sr {this.state.id}
             </h3>
           </div>
 
@@ -124,7 +126,7 @@ class ScannedCodeCheck extends Component {
           </FormGroup>
 
           <div className="container-login100-form-btn mt-5">
-            <Link to={"/scanned2"}
+            <Link to={"/scanned1"}
             className="login100-form-btn text-title-white
             "
             >

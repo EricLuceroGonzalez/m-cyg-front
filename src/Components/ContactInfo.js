@@ -1,12 +1,10 @@
 import React from "react";
 import { CardImg, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram
-} from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import qrScanned from "../media/logo-manito-regalo-white.png";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import '../styles/main.css'
+import "../styles/main.css";
 
 const formBg = {
   backgroundColor: "white",
@@ -20,11 +18,12 @@ class ContactInfo extends React.Component {
   render() {
     return (
       <div
-        className={`col-xs-10 col-md-10 col-sm-10 col-lg-6 mt-4 ml-auto mr-auto ${this.state.formClassName}`}
+        className={`col-xs-12 col-md-10 col-sm-10 col-lg-6 mt-4 ml-auto mr-auto ${this.state.formClassName}`}
         style={formBg}
       >
-        <div className="col-4 col-md-6 col-lg-4 mt-4 ml-auto mr-auto"
-        style={{backgroundColor: '#3b5998', borderRadius: '30% 0px 30% 0%'}}
+        <div
+          className="col-6 col-md-6 col-lg-4 mt-4 ml-auto mr-auto"
+          style={{ backgroundColor: "#3b5998", borderRadius: "30% 0px 30% 0%" }}
         >
           <CardImg
             alt="Card image cap....."
@@ -38,14 +37,14 @@ class ContactInfo extends React.Component {
           style={{
             margin: "10% auto 20% auto",
             color: "#4267B2",
-            fontSize: "2em",
+            fontSize: "1em",
             textAlign: "center",
             alignContent: "center"
           }}
         >
-<span className='mt-2 mb-4 text-title-blue  ml-auto mr-auto'>
-Informacion de contacto
-</span>
+          <span className="mt-2 mb-4 text-title-blue  ml-auto mr-auto">
+            Informacion de contacto
+          </span>
           <Button
             className="btn-facebook col-10 m-auto text-title-white"
             style={{ backgroundColor: "#ff6a00", fontSize: "0.75em" }}
@@ -53,7 +52,7 @@ Informacion de contacto
             <div className="row">
               <div
                 style={{
-                    margin: "0px 12px",
+                  margin: "0px 10px",
                   textAlign: "initial"
                 }}
               >
@@ -68,12 +67,10 @@ Informacion de contacto
                 style={{
                   margin: "0px auto",
                   textAlign: "center",
-                  fontSize: "1.45em"
+                  fontSize: "1.75em"
                 }}
               >
-                <div>
-                  comenta<span className="text-title-blue">y</span>gana
-                </div>
+                comentaygana
               </div>
             </div>
           </Button>
@@ -84,7 +81,7 @@ Informacion de contacto
             <div className="row">
               <div
                 style={{
-                  margin: "0px 12px",
+                  margin: "0px 10px",
                   textAlign: "initial"
                 }}
               >
@@ -100,7 +97,7 @@ Informacion de contacto
                 style={{
                   margin: "0px auto",
                   textAlign: "center",
-                  fontSize: "1.45em"
+                  fontSize: "1.25em"
                 }}
               >
                 <div className="text-title-white">info@comentaygana.com</div>

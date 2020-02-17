@@ -21,11 +21,10 @@ function App() {
   return (
     <Router>
       <Nav></Nav>
-      <Route exact path="/" component={ScannedCodeCheck} />
+      <Route exact path="/:id" component={ScannedCodeCheck} />
       <Route path="/aComment" component={Thumbs} />
       <Route path="/scanned" component={ScannedCodeCheck} />
-      <Route path="/scanned1" component={ScannedCodeCheck} />
-      <Route path="/scanned2" component={ScannedCodeInput} />
+      <Route path="/scanned1" component={ScannedCodeInput} />
       <Route path="/activate" component={ActivateQr} />
       <Route path="/terminos" component={terminosYCond} />
       <Route path="/checkPrice" component={scannedPrice} />
@@ -33,7 +32,6 @@ function App() {
       <Route path="/Win" component={Win} />
       <Route path="/contact" component={ContactInfo} />
       <Route path="/ActivateCamera" component={QrReader} />
-      />
     </Router>
   );
 }
