@@ -5,7 +5,6 @@ import "./App.css";
 
 import Nav from "./Components/NavBarCollapse";
 
-import ScannedCode from "./Components/scannedCode";
 import ScannedCodeCheck from "./Components/scannedCodeCheks";
 import ScannedCodeInput from "./Components/scannedCodeInput";
 import ActivateQr from "./Components/activateQr";
