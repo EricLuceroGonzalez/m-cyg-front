@@ -21,7 +21,8 @@ function App() {
   return (
     <Router>
       <Nav></Nav>
-      <Route exact path="/:id" component={ScannedCodeCheck} />
+      <Route exact path="/" component={ScannedCodeCheck} />
+      <Route path="/:id" component={ScannedCodeCheck} />
       <Route path="/aComment" component={Thumbs} />
       <Route path="/scanned" component={ScannedCodeCheck} />
       <Route path="/scanned1" component={ScannedCodeInput} />
