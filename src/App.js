@@ -20,7 +20,9 @@ function App() {
   return (
     <Router>
       <Nav></Nav>
-      <Route exact path="/" component={ScannedCodeCheck} />
+{/**      <Route exact path="/" component={ScannedCodeCheck} /> 
+      <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
+    */}
       <Route path="/:id" component={ScannedCodeCheck} />
       <Route path="/aComment" component={Thumbs} />
       <Route path="/scanned" component={ScannedCodeCheck} />

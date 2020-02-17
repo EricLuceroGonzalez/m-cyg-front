@@ -1,25 +1,35 @@
 import React, { Component } from "react";
-import {
-  CardImg,
-  Form,
-  Button,
-  FormGroup
-} from "reactstrap";
-import { useParams} from "react-router";
+import { CardImg, Form, Button, FormGroup } from "reactstrap";
 import { Link } from "react-router-dom";
 import qrScanned from "../media/logo00.png";
 import CheckItem from "./CheckItem";
+import apis from "../api";
 
 const formBg = {
   backgroundColor: "white",
   padding: "10px 15px",
   borderRadius: "16px"
 };
+
 class ScannedCodeCheck extends Component {
   state = {
+    lists: "",
     formClassName: "",
-    id: useParams()
+    coupons: "",
+    questionA: "",
+    questionB: ""
   };
+
+  componentDidMount() {
+    console.log(`The id props: ${this.props.match.params.id}`);
+    apis
+      .getCoupon(this.props.match.params.id)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ coupons: res.data });
+      })
+      .catch(err => console.log(err));
+  }
 
   checkBoxToggle = e => {
     this.state.receivePromos
@@ -101,7 +111,8 @@ class ScannedCodeCheck extends Component {
         >
           <div className="mt-5 mb-3 justify-content-center text-question">
             <h3 style={{ fontSize: "1.45em", textAlign: "center" }}>
-              Como le parecio nuestra atencion? sr {this.state.id}
+              {this.state.coupons.questionA }
+              <p>id: {this.props.match.params.id}</p>
             </h3>
           </div>
 
@@ -114,7 +125,7 @@ class ScannedCodeCheck extends Component {
 
           <div className="mt-5 mb-3 text-question">
             <h3 style={{ fontSize: "1.45em", textAlign: "center" }}>
-              Cada cuanto nos visita
+              {this.state.coupons.questionB}
             </h3>
           </div>
 
@@ -126,11 +137,19 @@ class ScannedCodeCheck extends Component {
           </FormGroup>
 
           <div className="container-login100-form-btn mt-5">
-            <Link to={"/scanned1"}
-            className="login100-form-btn text-title-white
+            <Link
+              to={"/scanned1"}
+              className="login100-form-btn text-title-white
             "
             >
-              <Button style={{backgroundColor: 'rgba(0,0,0,0)', border: '0px solid rgba(0,0,0,0)'}}>Siguiente</Button>
+              <Button
+                style={{
+                  backgroundColor: "rgba(0,0,0,0)",
+                  border: "0px solid rgba(0,0,0,0)"
+                }}
+              >
+                Siguiente
+              </Button>
             </Link>
           </div>
         </Form>
