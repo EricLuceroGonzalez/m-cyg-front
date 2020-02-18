@@ -23,7 +23,7 @@ function App() {
 {/**      <Route exact path="/" component={ScannedCodeCheck} /> 
       <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
     */}
-      <Route exact path="/:id" component={ScannedCodeCheck} />
+      <Route path="/:id" component={ScannedCodeCheck} />
       <Route path="/aComment" component={Thumbs} />
       <Route path="/scanned" component={ScannedCodeCheck} />
       <Route path="/scanned1" component={ScannedCodeInput} />
