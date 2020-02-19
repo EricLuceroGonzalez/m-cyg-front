@@ -745,6 +745,11 @@ iframe {
   font-family: Montserrat-BlackItalic;
   color: #ff6a00;
 }
+
+.text-title-gray {
+  font-family: Montserrat-Light;
+  color: gray;
+}
 .text-title-white {
   font-family: Montserrat-BlackItalic;
   color: 'white'

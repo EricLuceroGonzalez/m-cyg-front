@@ -21,7 +21,7 @@ class ScannedCodeCheck extends Component {
   };
 
   componentDidMount() {
-    console.log(`The id props: ${this.props.match.params.id}`);
+    // console.log(`The id props: ${this.props.match.params.id}`);
     apis
       .getCoupon(this.props.match.params.id)
       .then(res => {
@@ -111,16 +111,16 @@ class ScannedCodeCheck extends Component {
         >
           <div className="mt-5 mb-3 justify-content-center text-question">
             <h3 style={{ fontSize: "1.45em", textAlign: "center" }}>
-              {this.state.coupons.questionA }
+              {this.state.coupons.questionA}
               <p>id: {this.props.match.params.id}</p>
             </h3>
           </div>
 
           <FormGroup check className="p-2">
-            <CheckItem text={"Excelente"}></CheckItem>
-            <CheckItem text={"Buena"}></CheckItem>
-            <CheckItem text={"Regular"}></CheckItem>
-            <CheckItem text={"Mala"}></CheckItem>
+            <div className="row">
+              <CheckItem text={"Si"}></CheckItem>
+              <CheckItem text={"No"}></CheckItem>
+            </div>
           </FormGroup>
 
           <div className="mt-5 mb-3 text-question">
@@ -130,10 +130,10 @@ class ScannedCodeCheck extends Component {
           </div>
 
           <FormGroup check className="p-2">
-            <CheckItem text={"Primera vez"}></CheckItem>
-            <CheckItem text={"Una vez a la semana"}></CheckItem>
-            <CheckItem text={"Cada 15 dias"}></CheckItem>
-            <CheckItem text={"Diariamente"}></CheckItem>
+            <div className="row">
+              <CheckItem text={"Si"}></CheckItem>
+              <CheckItem text={"No"}></CheckItem>
+            </div>
           </FormGroup>
 
           <div className="container-login100-form-btn mt-5">

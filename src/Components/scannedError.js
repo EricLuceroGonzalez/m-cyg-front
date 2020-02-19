@@ -7,7 +7,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Label,
+  Label
 } from "reactstrap";
 import qrScanned from "../media/Comentaygana-14.png";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
@@ -112,6 +112,12 @@ class PriceError extends Component {
           className={`col-xs-10 col-md-10 col-sm-12 col-lg-8 mt-4 ml-auto mr-auto ${this.state.formClassName}`}
           style={formBg}
         >
+          <div style={{ transform: "rotate(-4deg)", textAlign: "center" }}>
+            <h1 style={{ fontSize: "5em" }} className="text-title-blue">
+              ¡Ups!
+            </h1>
+            <h2 className="text-title-orange">Ha ocurrido un error :(</h2>
+          </div>
           <div className="col-6 mt-4 ml-auto mr-auto">
             <CardImg
               style={{ transform: "rotate(180deg)" }}
@@ -126,19 +132,17 @@ class PriceError extends Component {
             className="col-sm-8 col-xs-12 ml-auto mr-auto"
             onReset={this.resetForm}
           >
-            <div className="justify-content-center mt-5">
-              <Label
-                style={{ margin: "0px auto", textAlign: "center" }}
-                className="text-b"
-              >
-                <p>
+            <div 
+            style={{ margin: "0px auto", textAlign: "center", fontSize: '1.5em' }}
+            className="justify-content-center mt-5">
+                <p className="text-title-gray">
                   Parece que el codigo ha sido desactivado. Por favor contacta
                   al personal responsable del local comercial o establecimiento.
                   Juntos hacemos de
                   <span style={{ color: "#ff6a00" }}> comentaygana.com </span>
                   un lugar mejor
                 </p>
-                <p>
+                <p className="text-title-gray">
                   para reportar algun otro inconveniente envie un correo
                   electronico a
                   <span style={{ color: "#ff6a00" }}>
@@ -146,7 +150,6 @@ class PriceError extends Component {
                     reporta@comentaygana.com{" "}
                   </span>
                 </p>
-              </Label>
             </div>
 
             {/* <Button onClick={this.state.sendTeamData}>Submit</Button> */}

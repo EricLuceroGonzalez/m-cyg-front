@@ -45,10 +45,7 @@ class AccessQR extends Component {
           >
             <CardHeader style={{ backgroundColor: "rgba(1,1,240,0.75)" }}>
               <div className="row" style={{ padding: "0px 20px" }}>
-                <div
-                  className="mr-auto"
-                  style={impact}
-                >
+                <div className="mr-auto" style={impact}>
                   {this.state.title}
                 </div>
               </div>

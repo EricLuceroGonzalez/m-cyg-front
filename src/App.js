@@ -15,15 +15,17 @@ import terminosYCond from "./Components/terminosYCond";
 import Win from "./Components/win";
 import ContactInfo from "./Components/ContactInfo";
 import QrReader from "./Components/qrReader";
+import Home from "./Components/HomeComponent";
 
 function App() {
   return (
     <Router>
-      <Nav></Nav>
-      {/**      <Route exact path="/" component={ScannedCodeCheck} /> 
+      {/*
+        <Nav></Nav>
+            <Route exact path="/" component={ScannedCodeCheck} /> 
       <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
     */}
-      <Route exact path="/" component={Thumbs} />
+      <Route exact path="/" component={Home} />
       <Route path="/youWin/:id" component={ScannedCodeCheck} />
       <Route path="/aComment" component={Thumbs} />
       <Route path="/scanned" component={ScannedCodeCheck} />
