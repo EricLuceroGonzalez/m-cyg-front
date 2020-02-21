@@ -405,7 +405,7 @@ iframe {
   width: 100%;
   height: 200%;
   position: relative;
-  background-color: #f7f7f7;  
+  background-color: #f7f7f7;
   border: 1px solid #e6e6e6;
   border-radius: 10px;
   margin-top: 15px;
@@ -752,7 +752,7 @@ iframe {
 }
 .text-title-white {
   font-family: Montserrat-BlackItalic;
-  color: 'white'
+  color: "white";
   /* color: #ff6a00; */
 }
 
@@ -789,4 +789,67 @@ iframe {
   margin: 5px 2px;
   padding: 3px 23px;
   font-size: 0.75em;
+}
+
+.button_yes {
+  background-color: #ff6a00;
+}
+
+.button_yes:disabled {
+  background-color: #3b5998;
+}
+
+.button_no {
+  background-color: rgba(0, 0, 0, 0.92);
+}
+.button_no:disabled {
+  background-color: rgba(250, 250, 0, 0.92);
+}
+
+
+/* @-webkit-keyframes color_change {
+  from {
+    background-color: blue;
+    color: purple;
+  }
+  to {
+    background-color: red;
+  }
+}
+@-moz-keyframes color_change {
+  from {
+    background-color: blue;
+    color: purple;
+  }
+  to {
+    background-color: red;
+  }
+}
+@-ms-keyframes color_change {
+  from {
+    background-color: blue;
+    color: purple;
+  }
+  to {
+    background-color: red;
+  }
+}
+@-o-keyframes color_change {
+  from {
+    background-color: blue;
+    color: purple;
+  }
+  to {
+    background-color: red;
+  }
+} */
+@keyframes color_change {
+  from {
+    background-color: blue;
+    color: purple;
+  }
+  to {
+    background-color: red;
+    color: coral;
+  }
 }

@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import { Label, Input } from "reactstrap";
 
 class CheckItem extends Component {
-  state = { text: this.props.text };
+  state = { text: this.props.text, chkbox: this.props.checke };
+
+  checkBoxToggle = e => {
+    console.log(e.target.checked);
+    this.setState({chkbox: !this.state.chkbox})
+    console.log(this.state.chkbox);
+  };
   render() {
     return (
       <div className="page mt-2 mb-2">
@@ -11,7 +17,8 @@ class CheckItem extends Component {
             <Input
               className="toggle__input"
               type="checkbox"
-              //   onClick={event => this.checkBoxToggle(event)}
+              checked={this.props.checke} 
+              onChange={this.props.onChange}
             />
             <span className="toggle__label">
               <span
@@ -21,7 +28,7 @@ class CheckItem extends Component {
                   padding: "2px 10px"
                 }}
               >
-                {this.state.text    }
+                {this.state.text}
               </span>
             </span>
           </Label>

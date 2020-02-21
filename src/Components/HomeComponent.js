@@ -3,19 +3,6 @@ import { Link } from "react-router-dom";
 import { Card, CardImg } from "reactstrap";
 import qr from "../media/logo00.png";
 
-const titleCard = {
-  fontSize: "1.25em",
-  fontWeight: "bolder",
-  borderBottom: "2px solid gray"
-};
-const impact = {
-  color: "white",
-  fontWeight: "bolder",
-  fontSize: "1.5em",
-  padding: "5px 14px",
-  textShadow: "2px 2px 1px black"
-};
-
 class Home extends Component {
   state = {
     title: this.props.title,

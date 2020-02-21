@@ -131,7 +131,7 @@ LEVEL 1. CORE STYLES
     opacity: 1;
     transform-origin: center center;
     will-change: transform;
-    transition: transform .2s ease-out;
+    transition: transform .1s ease-out;
   }
   
   .toggle__input:not(:disabled) ~ .toggle__label:before{

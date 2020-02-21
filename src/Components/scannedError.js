@@ -6,8 +6,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Label
+  ModalFooter
 } from "reactstrap";
 import qrScanned from "../media/Comentaygana-14.png";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";

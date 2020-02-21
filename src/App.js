@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
-import Nav from "./Components/NavBarCollapse";
+// import Nav from "./Components/NavBarCollapse";
 
 import ScannedCodeCheck from "./Components/scannedCodeCheks";
 import ScannedCodeInput from "./Components/scannedCodeInput";
@@ -16,7 +16,7 @@ import Win from "./Components/win";
 import ContactInfo from "./Components/ContactInfo";
 import QrReader from "./Components/qrReader";
 import Home from "./Components/HomeComponent";
-
+// 5e4b35cd121e0c1a1bc620df
 function App() {
   return (
     <Router>
