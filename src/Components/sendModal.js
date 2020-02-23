@@ -13,9 +13,15 @@ import {
   faThumbsDown,
   faCheckCircle,
   faTimesCircle,
-  faCertificate
+  faCertificate,
+  faArrowAltCircleLeft,
+  faPaperPlane
 } from "@fortawesome/free-solid-svg-icons";
 
+const fontType={
+  color: '#ff6a00',
+  fontFamily: 'Montserrat-BlackItalic'
+}
 class SendModal extends Component {
   state = {};
 
@@ -124,7 +130,8 @@ class SendModal extends Component {
         toggle={this.props.toggleThis}
         className="col-11 mr-auto ml-auto mt-5"
       >
-        <ModalHeader toggle={this.props.toggleThis}>
+        <ModalHeader toggle={this.props.toggleThis}
+        style={fontType}>
           Verifica!{" "}
           <FontAwesomeIcon
             style={{ color: "rgb(1,156,246)" }}
@@ -181,11 +188,21 @@ class SendModal extends Component {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={() => this.props.sendClick()}>
-            Enviar!
+          <Button 
+          style={fontType}
+          color="btn btn-outline-success" onClick={() => this.props.sendClick()}>
+            Enviar!{' '}
+            <FontAwesomeIcon 
+            style={{ color: "rgb(1,156,246)" }}
+            icon={faPaperPlane}></FontAwesomeIcon>
           </Button>
-          <Button color="info" onClick={this.props.toggleThis.bind(this)}>
-            volver
+          <Button 
+          style={fontType}
+          color="btn btn-outline-info"
+          onClick={this.props.toggleThis.bind(this)}>
+            Volver <FontAwesomeIcon 
+            style={{ color: "rgb(1,156,246)" }}
+            icon={faArrowAltCircleLeft}></FontAwesomeIcon>
           </Button>
         </ModalFooter>
       </Modal>

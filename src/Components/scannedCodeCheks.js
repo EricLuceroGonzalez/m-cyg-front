@@ -41,7 +41,7 @@ class ScannedCodeCheck extends Component {
     defaultCheckB: "",
     isCheckd: "",
     defaultCheck: "",
-    modal: false
+    modal: true
   };
 
   componentDidMount() {
@@ -618,7 +618,7 @@ class ScannedCodeCheck extends Component {
                   name="thumb"
                   value="true"
                   src={thumbUp}
-                  width="90px"
+                  width="50px"
                   alt="manito"
                 ></img>
               </div>
@@ -635,7 +635,7 @@ class ScannedCodeCheck extends Component {
                   name="thumb"
                   value="false"
                   src={thumbDown}
-                  width="90px"
+                  width="50px"
                   alt="manito"
                 ></img>
               </div>
@@ -667,8 +667,10 @@ class ScannedCodeCheck extends Component {
                 <span className="focus-input100"></span>
               </div>
             </FormGroup>
-            <div className="container-login100-form-btn mt-5">
-              <Button onClick={this.toggleModal}>Siguiente..</Button>
+            <div className="container-login100-form-btn mt-5 ml-auto mr-auto">
+              <Button
+              className='ml-auto mr-auto nextBtn'
+               onClick={this.toggleModal}>Siguiente</Button>
               <SendModal
                 modal={this.state.modal}
                 toggleThis={this.toggleModal}
