@@ -13,6 +13,9 @@ import CheckItem from "./CheckItem";
 import apis from "../api";
 import thumbUp from "../media/comentaygana-10.png";
 import thumbDown from "../media/comentaygana-10upside.png";
+import YesBtn from "./YesBtn";
+import NoBtn from "./NoBtn";
+import "./yesNoBtn.css";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -38,11 +41,16 @@ class ScannedCodeCheck extends Component {
     qACheck: false,
     qBCheck: false,
     thumb: "",
-    comment:"",
+    comment: "",
     defaultCheckAa: false,
-    defaultCheckAb: false
+    defaultCheckAb: false,
+    isCheckd: false,
+    defaultCheck: false
   };
 
+  componentWillMount() {
+    console.log(`check: ${this.state.qACheck}`);
+  }
   componentDidMount() {
     // console.log(`The id props: ${this.props.match.params.id}`);
     apis
@@ -55,18 +63,17 @@ class ScannedCodeCheck extends Component {
   }
 
   checkBoxToggle = e => {
-    console.log(e.target.value);
+    console.log(`qACheck: ${e.target.value}`);
     this.setState({
       qACheck: e.target.value
     });
   };
-  siguienteButton = () =>{
+  siguienteButton = () => {
     console.log(this.state);
-    
-  }
+  };
 
   checkBoxToggleB = e => {
-    console.log(e.target.value);
+    console.log(`qBCheck: ${e.target.value}`);
     this.setState({
       qBCheck: e.target.value
     });
@@ -113,10 +120,16 @@ class ScannedCodeCheck extends Component {
     const value = e.target.value;
     this.setState({ [name]: value });
   };
+  isClicked = e => {
+    console.log(`event: ${e.target.value}`);
+    this.setState({
+      isCheckd: !this.state.isCheckd,
+      qACheck: !this.state.qACheck
+    });
+    console.log(`Is Checked: ${this.state.isCheckd}`);
+  };
   render() {
-    let btn_sel = this.state.qACheck
-      ? "button_yes ml-auto mr-auto"
-      : "button_yes:disabled ml-auto mr-auto";
+    var btn_sel = this.state.qACheck ? "btn-success" : "btn-outline-success";
 
     let btn_selB = this.state.qBCheck
       ? "button_yes ml-auto mr-auto"
@@ -126,33 +139,58 @@ class ScannedCodeCheck extends Component {
         className={`col-12 col-sm-10 col-md-8 col-lg-8 ml-auto mr-auto ${this.state.formClassName}`}
         style={formBg}
       >
-        <div className="col-8 mt-4 ml-auto mr-auto">
+        <div className="col-5 mt-4 ml-auto mr-auto">
           <CardImg
             alt="Card image cap....."
             width="65%"
             src={qrScanned}
           ></CardImg>
         </div>
-
+        <div className="row ml-auto mr-auto">
+          <YesBtn
+            clica={this.isClicked}
+            isCheckd={
+              this.state.defaultCheck
+                ? !this.state.isCheckd
+                : this.state.isCheckd
+            }
+            value={true}
+            label={"YES"}
+          ></YesBtn>
+          <NoBtn
+            clica={this.isClicked}
+            isCheckd={
+              this.state.defaultCheck
+                ? this.state.isCheckd
+                : !this.state.isCheckd
+            }
+            value={false}
+            label={"NO"}
+          ></NoBtn>
+          {/**          <YesNoBtn isCheckd={false} value={false} label={"NO"}></YesNoBtn> */}
+        </div>
         <Form
           // style={formBg}
           className="col-sm-10 col-xs-12 ml-auto mr-auto"
           onReset={this.resetForm}
         >
           <div className="mt-5 mb-3 justify-content-center text-question">
-            <h3 style={{ fontSize: "1.45em", textAlign: "center" }}>
+            <Label
+              style={{ margin: "0px auto", textAlign: "center" }}
+              className="text-question"
+            >
               {this.state.coupons.questionA}
-            </h3>
+            </Label>
           </div>
           <div
-            className="col-6 ml-auto mr-auto"
+            className="col-12 ml-auto mr-auto"
             style={{ border: "1px dashed" }}
           >
             <ButtonGroup className="col-12 ml-auto mr-auto">
               <Button
                 value={true}
                 onClick={e => this.checkBoxToggle(e)}
-                className={btn_sel}
+                className={this.state.qACheck ? "isClicked" : "notClicked"}
               >
                 Si
               </Button>
@@ -160,7 +198,8 @@ class ScannedCodeCheck extends Component {
               <Button
                 value={false}
                 onClick={e => this.checkBoxToggle(e)}
-                className={btn_sel}
+                // className={btn_sel}
+                className={this.state.qACheck ? "isClicked" : "notClicked"}
               >
                 No
               </Button>
@@ -168,13 +207,16 @@ class ScannedCodeCheck extends Component {
           </div>
 
           <div className="mt-5 mb-3 text-question">
-            <h3 style={{ fontSize: "1.45em", textAlign: "center" }}>
+            <Label
+              style={{ margin: "0px auto", textAlign: "center" }}
+              className="text-question"
+            >
               {this.state.coupons.questionB}
-            </h3>
+            </Label>
           </div>
 
           <div
-            className="col-6 ml-auto mr-auto"
+            className="col-12 ml-auto mr-auto"
             style={{ border: "1px dashed" }}
           >
             <ButtonGroup className="col-12 ml-auto mr-auto">
@@ -264,17 +306,15 @@ class ScannedCodeCheck extends Component {
             </div>
           </FormGroup>
           <div className="container-login100-form-btn mt-5">
-            
-              <Button
+            <Button
               onClick={this.siguienteButton}
-                // style={{
-                //   backgroundColor: "rgba(0,0,0,0)",
-                //   border: "0px solid rgba(0,0,0,0)"
-                // }}
-              >
-                Siguiente
-              </Button>
-
+              // style={{
+              //   backgroundColor: "rgba(0,0,0,0)",
+              //   border: "0px solid rgba(0,0,0,0)"
+              // }}
+            >
+              Siguiente
+            </Button>
           </div>
         </Form>
       </div>

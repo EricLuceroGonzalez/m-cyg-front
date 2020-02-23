@@ -1,0 +1,20 @@
+.btn {
+  padding: 5px 7px;
+}
+.isClicked {
+  background-color: rgba(222, 222, 222, 0.25);
+  color: rgba(190, 190, 190, 0.75);
+  font-weight: bold;
+  border: none;
+  box-shadow: 2px 3px 4px gray;
+  font-family: Montserrat-BlackItalic;
+
+}
+
+.notClicked {
+  background-color: rgba(222, 222, 222, 0.5);
+  color: gray;
+  font-family: Montserrat-SemiBold;
+  border: none;
+  box-shadow: 2px 3px 4px gray;
+}
