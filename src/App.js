@@ -20,7 +20,7 @@ import Home from "./Components/HomeComponent";
 function App() {
   return (
     <Router>
-      {/*
+      {/*false
         <Nav></Nav>
             <Route exact path="/" component={ScannedCodeCheck} /> 
       <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />

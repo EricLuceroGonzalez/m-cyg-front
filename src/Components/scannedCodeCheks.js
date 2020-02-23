@@ -9,6 +9,7 @@ import "./yesNoBtn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import YesNoBtn from "./NoBtn";
+import SendModal from "./sendModal";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -29,14 +30,15 @@ class ScannedCodeCheck extends Component {
     lists: "",
     formClassName: "",
     coupons: [],
-    qACheck: '',
-    qBCheck: '',
+    qACheck: "",
+    qBCheck: "",
     thumb: "",
     comment: "",
     defaultCheckA: "",
     defaultCheckB: "",
     isCheckd: "",
-    defaultCheck: ""
+    defaultCheck: "",
+    modal: false
   };
 
   componentDidMount() {
@@ -44,7 +46,6 @@ class ScannedCodeCheck extends Component {
     apis
       .getCoupon(this.props.match.params.id)
       .then(res => {
-        console.log(res.data);
         this.setState({ coupons: res.data });
       })
       .catch(err => console.log(err));
@@ -89,6 +90,14 @@ class ScannedCodeCheck extends Component {
       this.setState({ [name]: IconValue });
     }
     console.log(this.state);
+  };
+
+  toggleModal = () => {
+    // e.preventDefault();
+    console.log(this.state);
+    this.setState({
+      modal: !this.state.modal
+    });
   };
 
   clicked = e => {
@@ -265,15 +274,18 @@ class ScannedCodeCheck extends Component {
             </div>
           </FormGroup>
           <div className="container-login100-form-btn mt-5">
-            <Button
-              onClick={this.siguienteButton}
-              // style={{
-              //   backgroundColor: "rgba(0,0,0,0)",
-              //   border: "0px solid rgba(0,0,0,0)"
-              // }}
-            >
-              Siguiente
-            </Button>
+            <Button onClick={this.toggleModal}>Siguiente..</Button>
+            <SendModal
+              modal={this.state.modal}
+              toggleThis={this.toggleModal}
+              couponInfo={this.state.coupons}
+              qA={this.state.coupons.questionA}
+              qARes={this.state.qACheck}
+              qBRes={this.state.qBCheck}
+              qB={this.state.coupons.questionB}
+              thumy={this.state.thumb}
+              comment={this.state.comment}
+            ></SendModal>
           </div>
         </Form>
       </div>
