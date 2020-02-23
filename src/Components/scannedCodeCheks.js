@@ -41,7 +41,7 @@ class ScannedCodeCheck extends Component {
     defaultCheckB: "",
     isCheckd: "",
     defaultCheck: "",
-    modal: true
+    modal: false
   };
 
   componentDidMount() {
