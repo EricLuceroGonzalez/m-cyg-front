@@ -17,6 +17,8 @@ import ContactInfo from "./Components/ContactInfo";
 import QrReader from "./Components/qrReader";
 import Home from "./Components/HomeComponent";
 // 5e4b35cd121e0c1a1bc620df
+// 5e4c77c255d928001732d1d5
+// 5e4cd14fef193600170f0f8f
 function App() {
   return (
     <Router>

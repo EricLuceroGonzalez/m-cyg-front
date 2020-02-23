@@ -47,7 +47,7 @@ class ScannedCodeCheck extends Component {
     apis
       .getCoupon(this.props.match.params.id)
       .then(res => {
-        this.setState({ coupons: res.data });
+        this.setState({ coupons: res.data, questionA: res.data.questionA });
       })
       .catch(err => console.log(err));
   }
@@ -152,34 +152,95 @@ class ScannedCodeCheck extends Component {
     });
     console.log(`Is Checked: ${this.state.isCheckd}`);
   };
-  renderCheckIconY() {
-    if (this.state.defaultCheckA === "true") {
+  // ¿?
+  renderQuestions = theQuestion => {
+    console.log(this.state.coupons[theQuestion]);
+    console.log(this.state.coupons[theQuestion][0]);
+    console.log(this.state.coupons[theQuestion][this.state.coupons[theQuestion].length - 1]);
+    
+    if (
+      this.state.coupons[theQuestion][0] !== "¿" &&
+      this.state.coupons[theQuestion][
+        this.state.coupons[theQuestion].length -1
+      ] === "?" 
+    ) {
       return (
-        <FontAwesomeIcon
-          className="ml-2"
-          style={{ color: "rgb(50,205,50)" }}
-          icon={faCheckCircle}
-        ></FontAwesomeIcon>
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.state.coupons[theQuestion].slice(0,this.state.coupons[theQuestion].length-1)}
+          <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
+      );
+    } else if (
+      this.state.coupons[theQuestion][0] !== "¿" &&
+      this.state.coupons[theQuestion][
+        this.state.coupons[theQuestion].length -1
+      ] === " " &&
+      this.state.coupons[theQuestion][
+        this.state.coupons[theQuestion].length -2
+      ] === "?" 
+    ) {
+      return (
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+        <span style={{ color: "#ff6a00" }}>¿</span>
+        {this.state.coupons[theQuestion].slice(0,this.state.coupons[theQuestion].length-2)}
+        <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
+      );
+    } else if (
+      this.state.coupons[theQuestion][0] === "¿" &&
+      this.state.coupons[theQuestion][
+        this.state.coupons[theQuestion].length - 1
+      ] === "?"
+    ) {
+      return (
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+        <span style={{ color: "#ff6a00" }}>¿</span>
+        {this.state.coupons[theQuestion].slice(1,this.state.coupons[theQuestion].length-2)}
+        <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
       );
     } else {
-      return " ";
-    }
-  }
-  renderCheckIconN() {
-    if (this.state.defaultCheckA === "false") {
       return (
-        <FontAwesomeIcon
-          style={{ color: "rgb(50,205,50)" }}
-          className="ml-2"
-          icon={faCheckCircle}
-        ></FontAwesomeIcon>
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.state.coupons[theQuestion].slice(
+            0,
+            this.state.coupons[theQuestion].length
+          )}
+          <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
       );
-    } else {
-      return " ";
     }
-  }
-  // Si
-  // {this.state.qACheck ? this.renderCheckIcon() : "" }
+  };
   render() {
     if (this.state.coupons.length === 0) {
       return <LoadingPage></LoadingPage>;
@@ -202,12 +263,7 @@ class ScannedCodeCheck extends Component {
             onReset={this.resetForm}
           >
             <div className="mt-5 mb-3 justify-content-center text-question">
-              <Label
-                style={{ margin: "0px auto", textAlign: "center" }}
-                className="text-question"
-              >
-                {this.state.coupons.questionA}
-              </Label>
+              {this.renderQuestions("questionA")}
             </div>
             <YesNoBtn
               defaultCheck={this.state.defaultCheckA}
@@ -215,12 +271,7 @@ class ScannedCodeCheck extends Component {
             ></YesNoBtn>
 
             <div className="mt-5 mb-3 text-question">
-              <Label
-                style={{ margin: "0px auto", textAlign: "center" }}
-                className="text-question"
-              >
-                {this.state.coupons.questionB}
-              </Label>
+              {this.renderQuestions("questionB")}
             </div>
             <YesNoBtn
               defaultCheck={this.state.defaultCheckB}
@@ -229,10 +280,16 @@ class ScannedCodeCheck extends Component {
 
             <div className="justify-content-center mt-5">
               <Label
-                style={{ margin: "0px auto", textAlign: "center" }}
+                style={{
+                  margin: "0px auto",
+                  textAlign: "center",
+                  fontSize: "0.85em"
+                }}
                 className="text-question"
               >
-                Volverias a nuestras instalaciones?
+                <span style={{ color: "#ff6a00" }}>¿</span>
+                Volverias a nuestras instalaciones
+                <span style={{ color: "#ff6a00" }}>?</span>
               </Label>
             </div>
             <div className="login100-form-titledatos">

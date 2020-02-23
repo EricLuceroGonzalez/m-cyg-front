@@ -59,7 +59,7 @@ class SendModal extends Component {
         <ModalBody>
           <div
             className="col-12 ml-auto mr-auto"
-            style={{ border: "1px solid red", padding: "20px 0px" }}
+            style={{ padding: "20px 0px" }}
           >
             <div className="container col-12 d-flex justify-content-center">
               <div className="col-12">
