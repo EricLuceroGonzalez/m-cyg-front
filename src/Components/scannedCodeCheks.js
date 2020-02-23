@@ -7,10 +7,13 @@ import thumbUp from "../media/comentaygana-10.png";
 import thumbDown from "../media/comentaygana-10upside.png";
 import "./yesNoBtn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPuzzlePiece,
+} from "@fortawesome/free-solid-svg-icons";
 import YesNoBtn from "./NoBtn";
 import SendModal from "./sendModal";
 import LoadingPage from "./LoadingPage";
+import cogoToast from "cogo-toast";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -21,9 +24,8 @@ const formBg = {
 const formFill = {
   color: "gray",
   fontSize: "0.85em",
-  fontFamily: "Montserrat",
-  margin: "10px 2px",
-  fontWeight: "lighter"
+  fontFamily: "Montserrat-SemiBold",
+  margin: "10px 2px"
 };
 
 class ScannedCodeCheck extends Component {
@@ -116,11 +118,312 @@ class ScannedCodeCheck extends Component {
   };
 
   toggleModal = () => {
-    // e.preventDefault();
-    console.log(this.state);
-    this.setState({
-      modal: !this.state.modal
-    });
+    if (
+      this.state.qACheck === "" &&
+      this.state.qBCheck === "" &&
+      this.state.thumb === ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionA")}
+            </div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionB")}
+            </div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              <Label
+                style={{
+                  margin: "0px auto",
+                  textAlign: "center",
+                  fontSize: "0.85em"
+                }}
+                className="text-question"
+              >
+                <span style={{ color: "#ff6a00" }}>¿</span>
+                Volverias a nuestras instalaciones
+                <span style={{ color: "#ff6a00" }}>?</span>
+              </Label>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (
+      this.state.qACheck === "" &&
+      this.state.qBCheck !== "" &&
+      this.state.thumb === ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionA")}
+            </div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              <Label
+                style={{
+                  margin: "0px auto",
+                  textAlign: "center",
+                  fontSize: "0.85em"
+                }}
+                className="text-question"
+              >
+                <span style={{ color: "#ff6a00" }}>¿</span>
+                Volverias a nuestras instalaciones
+                <span style={{ color: "#ff6a00" }}>?</span>
+              </Label>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (
+      this.state.qACheck !== "" &&
+      this.state.qBCheck === "" &&
+      this.state.thumb === ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionB")}
+            </div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              <Label
+                style={{
+                  margin: "0px auto",
+                  textAlign: "center",
+                  fontSize: "0.85em"
+                }}
+                className="text-question"
+              >
+                <span style={{ color: "#ff6a00" }}>¿</span>
+                Volverias a nuestras instalaciones
+                <span style={{ color: "#ff6a00" }}>?</span>
+              </Label>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (
+      this.state.qACheck === "" &&
+      this.state.qBCheck === "" &&
+      this.state.thumb !== ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionA")}
+            </div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionB")}
+            </div>
+          </div>
+        </div>
+      );
+    } else if (
+      this.state.qACheck === "" &&
+      this.state.qBCheck !== "" &&
+      this.state.thumb !== ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionA")}
+            </div>
+          </div>
+        </div>
+      );
+    } else if (
+      this.state.qACheck !== "" &&
+      this.state.qBCheck === "" &&
+      this.state.thumb !== ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              {this.renderQuestions("questionB")}
+            </div>
+          </div>
+        </div>
+      );
+    } else if (
+      this.state.qACheck !== "" &&
+      this.state.qBCheck !== "" &&
+      this.state.thumb === ""
+    ) {
+      cogoToast.warn(
+        <div>
+          <div style={{ height: "30vh" }}>
+            <b>Espera!</b>
+            <div
+              className="col-12"
+              style={{
+                fontSize: "3em",
+                color: "rgb(50,103,205)",
+                textAlign: "center"
+              }}
+            >
+              <FontAwesomeIcon icon={faPuzzlePiece}></FontAwesomeIcon>
+            </div>
+            <div>Te falta responder las preguntas:</div>
+            <div
+              style={{
+                marginTop: "20px",
+                backgroundColor: "rgba(244,245,20,0.5)"
+              }}
+            >
+              <Label
+                style={{
+                  margin: "0px auto",
+                  textAlign: "center",
+                  fontSize: "0.85em"
+                }}
+                className="text-question"
+              >
+                <span style={{ color: "#ff6a00" }}>¿</span>
+                Volverias a nuestras instalaciones
+                <span style={{ color: "#ff6a00" }}>?</span>
+              </Label>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      this.setState({
+        modal: !this.state.modal
+      });
+    }
   };
 
   clicked = e => {
@@ -154,15 +457,12 @@ class ScannedCodeCheck extends Component {
   };
   // ¿?
   renderQuestions = theQuestion => {
-    console.log(this.state.coupons[theQuestion]);
-    console.log(this.state.coupons[theQuestion][0]);
-    console.log(this.state.coupons[theQuestion][this.state.coupons[theQuestion].length - 1]);
-    
+
     if (
       this.state.coupons[theQuestion][0] !== "¿" &&
       this.state.coupons[theQuestion][
-        this.state.coupons[theQuestion].length -1
-      ] === "?" 
+        this.state.coupons[theQuestion].length - 1
+      ] === "?"
     ) {
       return (
         <Label
@@ -174,18 +474,21 @@ class ScannedCodeCheck extends Component {
           className="text-question"
         >
           <span style={{ color: "#ff6a00" }}>¿</span>
-          {this.state.coupons[theQuestion].slice(0,this.state.coupons[theQuestion].length-1)}
+          {this.state.coupons[theQuestion].slice(
+            0,
+            this.state.coupons[theQuestion].length - 1
+          )}
           <span style={{ color: "#ff6a00" }}>?</span>
         </Label>
       );
     } else if (
       this.state.coupons[theQuestion][0] !== "¿" &&
       this.state.coupons[theQuestion][
-        this.state.coupons[theQuestion].length -1
+        this.state.coupons[theQuestion].length - 1
       ] === " " &&
       this.state.coupons[theQuestion][
-        this.state.coupons[theQuestion].length -2
-      ] === "?" 
+        this.state.coupons[theQuestion].length - 2
+      ] === "?"
     ) {
       return (
         <Label
@@ -196,9 +499,12 @@ class ScannedCodeCheck extends Component {
           }}
           className="text-question"
         >
-        <span style={{ color: "#ff6a00" }}>¿</span>
-        {this.state.coupons[theQuestion].slice(0,this.state.coupons[theQuestion].length-2)}
-        <span style={{ color: "#ff6a00" }}>?</span>
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.state.coupons[theQuestion].slice(
+            0,
+            this.state.coupons[theQuestion].length - 2
+          )}
+          <span style={{ color: "#ff6a00" }}>?</span>
         </Label>
       );
     } else if (
@@ -216,9 +522,12 @@ class ScannedCodeCheck extends Component {
           }}
           className="text-question"
         >
-        <span style={{ color: "#ff6a00" }}>¿</span>
-        {this.state.coupons[theQuestion].slice(1,this.state.coupons[theQuestion].length-2)}
-        <span style={{ color: "#ff6a00" }}>?</span>
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.state.coupons[theQuestion].slice(
+            1,
+            this.state.coupons[theQuestion].length - 2
+          )}
+          <span style={{ color: "#ff6a00" }}>?</span>
         </Label>
       );
     } else {

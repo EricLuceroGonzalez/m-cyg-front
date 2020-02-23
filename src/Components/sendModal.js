@@ -42,6 +42,81 @@ class SendModal extends Component {
       ></FontAwesomeIcon>
     );
   };
+
+  renderQuestions = theQuestion => {
+
+    if (
+      this.props[theQuestion][0] !== "¿" &&
+      this.props[theQuestion][this.props[theQuestion].length - 1] === "?"
+    ) {
+      return (
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.props[theQuestion].slice(0, this.props[theQuestion].length - 1)}
+          <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
+      );
+    } else if (
+      this.props[theQuestion][0] !== "¿" &&
+      this.props[theQuestion][this.props[theQuestion].length - 1] === " " &&
+      this.props[theQuestion][this.props[theQuestion].length - 2] === "?"
+    ) {
+      return (
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.props[theQuestion].slice(0, this.props[theQuestion].length - 2)}
+          <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
+      );
+    } else if (
+      this.props[theQuestion][0] === "¿" &&
+      this.props[theQuestion][this.props[theQuestion].length - 1] === "?"
+    ) {
+      return (
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.props[theQuestion].slice(1, this.props[theQuestion].length - 2)}
+          <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
+      );
+    } else {
+      return (
+        <Label
+          style={{
+            margin: "0px auto",
+            textAlign: "center",
+            fontSize: "0.85em"
+          }}
+          className="text-question"
+        >
+          <span style={{ color: "#ff6a00" }}>¿</span>
+          {this.props[theQuestion].slice(0, this.props[theQuestion].length)}
+          <span style={{ color: "#ff6a00" }}>?</span>
+        </Label>
+      );
+    }
+  };
   render() {
     return (
       <Modal
@@ -64,7 +139,7 @@ class SendModal extends Component {
             <div className="container col-12 d-flex justify-content-center">
               <div className="col-12">
                 <div className="row mt-2" style={{ border: "1px solid gray" }}>
-                  <Label className="col-10 text-o-s">{this.props.qA}</Label>
+                  <div className="col-10">{this.renderQuestions("qA")}</div>
                   <div className="col-2">
                     {this.props.qARes === "true"
                       ? this.tenderResponseYes()
@@ -72,7 +147,7 @@ class SendModal extends Component {
                   </div>
                 </div>
                 <div className="row mt-2" style={{ border: "1px solid gray" }}>
-                  <Label className="col-10 text-o-s">{this.props.qB}</Label>
+                  <div className="col-10">{this.renderQuestions("qB")}</div>
                   <div className="col-2">
                     {this.props.qBRes === "true"
                       ? this.tenderResponseYes()
@@ -80,9 +155,21 @@ class SendModal extends Component {
                   </div>
                 </div>
                 <div className="row mt-2" style={{ border: "1px solid gray" }}>
-                  <Label className="col-10 text-o-s">
-                    Volverias a nuestras instalaciones?
-                  </Label>
+                  <div className="col-10">
+                    <Label
+                      style={{
+                        margin: "0px auto",
+                        textAlign: "center",
+                        fontSize: "0.85em"
+                      }}
+                      className="text-question"
+                    >
+                      <span style={{ color: "#ff6a00" }}>¿</span>
+                      Volverias a nuestras instalaciones?
+                      <span style={{ color: "#ff6a00" }}>?</span>
+                    </Label>
+                  </div>
+
                   <div className="col-2">{this.renderThumb()}</div>
                 </div>
                 <div className="row mt-2" style={{ border: "1px solid gray" }}>
@@ -94,9 +181,9 @@ class SendModal extends Component {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="success"
-          onClick={() => this.props.sendClick()}
-          >Enviar!</Button>
+          <Button color="success" onClick={() => this.props.sendClick()}>
+            Enviar!
+          </Button>
           <Button color="info" onClick={this.props.toggleThis.bind(this)}>
             volver
           </Button>
