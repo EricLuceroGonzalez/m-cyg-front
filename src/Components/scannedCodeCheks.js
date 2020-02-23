@@ -51,6 +51,20 @@ class ScannedCodeCheck extends Component {
       .catch(err => console.log(err));
   }
 
+  sendData() {
+    apis
+      .postCouponComment({
+        qAcheck: this.state.qACheck,
+        qBcheck: this.state.qBCheck,
+        thumb: this.state.thumb,
+        comment: this.state.comment
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  }
+
   checkBoxToggle = e => {
     console.log(`qACheck: ${e.target.value}`);
     // console.log(e.target);

@@ -8,10 +8,12 @@ const api = axios.create({
 export const getAllComments = () => api.get("/comments");
 export const getAllCoupons = () => api.get("/coupons");
 export const getCoupon = theID => api.get(`/getCoupon/${theID}`);
+export const postCouponComment = content => api.post('/aComment', content);
 const apis = {
   getAllComments,
   getAllCoupons,
-  getCoupon
+  getCoupon,
+  postCouponComment
 };
 
 // baseURL: "http://localhost:3000/api"

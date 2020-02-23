@@ -12,7 +12,8 @@ import {
   faThumbsUp,
   faThumbsDown,
   faCheckCircle,
-  faTimesCircle
+  faTimesCircle,
+  faCertificate
 } from "@fortawesome/free-solid-svg-icons";
 
 class SendModal extends Component {
@@ -49,19 +50,23 @@ class SendModal extends Component {
         className="col-11 mr-auto ml-auto mt-5"
       >
         <ModalHeader toggle={this.props.toggleThis}>
-          Comentario enviado!
+          Verifica!{" "}
+          <FontAwesomeIcon
+            style={{ color: "rgb(1,156,246)" }}
+            icon={faCertificate}
+          ></FontAwesomeIcon>
         </ModalHeader>
         <ModalBody>
           <div
             className="col-12 ml-auto mr-auto"
-            style={{ border: "1px solid red" }}
+            style={{ border: "1px solid red", padding: "20px 0px" }}
           >
             <div className="container col-12 d-flex justify-content-center">
               <div className="col-12">
                 <div className="row mt-2" style={{ border: "1px solid gray" }}>
                   <Label className="col-10 text-o-s">{this.props.qA}</Label>
                   <div className="col-2">
-                    {this.props.qARes === 'true'
+                    {this.props.qARes === "true"
                       ? this.tenderResponseYes()
                       : this.tenderResponseNo()}
                   </div>
@@ -69,7 +74,7 @@ class SendModal extends Component {
                 <div className="row mt-2" style={{ border: "1px solid gray" }}>
                   <Label className="col-10 text-o-s">{this.props.qB}</Label>
                   <div className="col-2">
-                    {this.props.qBRes === 'true'
+                    {this.props.qBRes === "true"
                       ? this.tenderResponseYes()
                       : this.tenderResponseNo()}
                   </div>
@@ -89,8 +94,8 @@ class SendModal extends Component {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="success">seguir!</Button>
-          <Button color="secondary" onClick={this.props.toggleThis.bind(this)}>
+          <Button color="success">Enviar!</Button>
+          <Button color="info" onClick={this.props.toggleThis.bind(this)}>
             volver
           </Button>
         </ModalFooter>
