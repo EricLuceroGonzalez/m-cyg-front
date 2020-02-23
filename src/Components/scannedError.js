@@ -13,9 +13,10 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const formBg = {
-  backgroundColor: "white",
+  backgroundColor: "rgba(222,222,222,0.35)",
   padding: "10px 15px",
-  borderRadius: "16px"
+  borderRadius: "16px",
+  height: '100vh'
 };
 
 class PriceError extends Component {
@@ -108,16 +109,16 @@ class PriceError extends Component {
             </div>
             */}
         <div
-          className={`col-xs-10 col-md-10 col-sm-12 col-lg-8 mt-4 ml-auto mr-auto ${this.state.formClassName}`}
+          className={`col-xs-10 col-md-10 col-sm-12 col-lg-8 col-12 mt-4 ml-auto mr-auto ${this.state.formClassName}`}
           style={formBg}
         >
           <div style={{ transform: "rotate(-4deg)", textAlign: "center" }}>
-            <h1 style={{ fontSize: "5em" }} className="text-title-blue">
+            <h1 style={{ fontSize: "4em" }} className="text-title-blue">
               ¡Ups!
             </h1>
             <h2 className="text-title-orange">Ha ocurrido un error :(</h2>
           </div>
-          <div className="col-6 mt-4 ml-auto mr-auto">
+          <div className="col-4 mt-4 ml-auto mr-auto">
             <CardImg
               style={{ transform: "rotate(180deg)" }}
               alt="Card image cap....."
@@ -128,12 +129,12 @@ class PriceError extends Component {
 
           <Form
             // style={formBg}
-            className="col-sm-8 col-xs-12 ml-auto mr-auto"
+            className="col-12 col-sm-8 col-xs-12 ml-auto mr-auto"
             onReset={this.resetForm}
           >
             <div 
-            style={{ margin: "0px auto", textAlign: "center", fontSize: '1.5em' }}
-            className="justify-content-center mt-5">
+            style={{ margin: "0px auto", fontSize: '0.85em' }}
+            className="justify-content-center mt-3">
                 <p className="text-title-gray">
                   Parece que el codigo ha sido desactivado. Por favor contacta
                   al personal responsable del local comercial o establecimiento.

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Label, CardImg, Form, Button, FormGroup } from "reactstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import qrScanned from "../media/logo00.png";
 import apis from "../api";
 import thumbUp from "../media/comentaygana-10.png";
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import YesNoBtn from "./NoBtn";
 import SendModal from "./sendModal";
+import LoadingPage from "./LoadingPage";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -51,19 +52,27 @@ class ScannedCodeCheck extends Component {
       .catch(err => console.log(err));
   }
 
-  sendData() {
+  sendData = () => {
+    console.log("\n\n\n\n\n inside sendFormData()");
+    console.log(this.state);
     apis
       .postCouponComment({
+        comment: this.state.comment,
         qAcheck: this.state.qACheck,
         qBcheck: this.state.qBCheck,
         thumb: this.state.thumb,
-        comment: this.state.comment
+        couponId: this.state.coupons._id
       })
       .then(res => {
         console.log(res);
+        this.props.history.push("/checkPrice");
       })
-      .catch(err => console.log(err));
-  }
+      .catch(err => {
+        this.props.history.push("/checkError");
+        console.log(this.state);
+        console.log(err);
+      });
+  };
 
   checkBoxToggle = e => {
     console.log(`qACheck: ${e.target.value}`);
@@ -172,138 +181,142 @@ class ScannedCodeCheck extends Component {
   // Si
   // {this.state.qACheck ? this.renderCheckIcon() : "" }
   render() {
-    var btn_sel = this.state.qACheck ? "btn-success" : "btn-outline-success";
-
-    let btn_selB = this.state.qBCheck
-      ? "button_yes ml-auto mr-auto"
-      : "button_yes:disabled ml-auto mr-auto";
-    return (
-      <div
-        className={`col-12 col-sm-10 col-md-8 col-lg-8 ml-auto mr-auto ${this.state.formClassName}`}
-        style={formBg}
-      >
-        <div className="col-5 mt-4 ml-auto mr-auto">
-          <CardImg
-            alt="Card image cap....."
-            width="65%"
-            src={qrScanned}
-          ></CardImg>
-        </div>
-        <Form
-          // style={formBg}
-          className="col-sm-10 col-xs-12 ml-auto mr-auto"
-          onReset={this.resetForm}
+    if (this.state.coupons.length === 0) {
+      return <LoadingPage></LoadingPage>;
+    } else {
+      return (
+        <div
+          className={`col-12 col-sm-10 col-md-8 col-lg-8 ml-auto mr-auto ${this.state.formClassName}`}
+          style={formBg}
         >
-          <div className="mt-5 mb-3 justify-content-center text-question">
-            <Label
-              style={{ margin: "0px auto", textAlign: "center" }}
-              className="text-question"
-            >
-              {this.state.coupons.questionA}
-            </Label>
+          <div className="col-5 mt-4 ml-auto mr-auto">
+            <CardImg
+              alt="Card image cap....."
+              width="65%"
+              src={qrScanned}
+            ></CardImg>
           </div>
-          <YesNoBtn
-            defaultCheck={this.state.defaultCheckA}
-            wasClick={this.checkBoxToggle}
-          ></YesNoBtn>
-
-          <div className="mt-5 mb-3 text-question">
-            <Label
-              style={{ margin: "0px auto", textAlign: "center" }}
-              className="text-question"
-            >
-              {this.state.coupons.questionB}
-            </Label>
-          </div>
-          <YesNoBtn
-            defaultCheck={this.state.defaultCheckB}
-            wasClick={this.checkBoxToggleB}
-          ></YesNoBtn>
-
-          <div className="justify-content-center mt-5">
-            <Label
-              style={{ margin: "0px auto", textAlign: "center" }}
-              className="text-question"
-            >
-              Volverias a nuestras instalaciones?
-            </Label>
-          </div>
-          <div className="login100-form-titledatos">
-            <div
-              // style={{ border: "1px solid red" }}
-              name="thumb"
-              onClick={this.handleIconClick.bind(this)}
-              data-id="1"
-              className={this.state.activeThumbUp ? "jello-horizontal" : "none"}
-            >
-              <img
-                name="thumb"
-                value="true"
-                src={thumbUp}
-                width="90px"
-                alt="manito"
-              ></img>
+          <Form
+            // style={formBg}
+            className="col-sm-10 col-xs-12 ml-auto mr-auto"
+            onReset={this.resetForm}
+          >
+            <div className="mt-5 mb-3 justify-content-center text-question">
+              <Label
+                style={{ margin: "0px auto", textAlign: "center" }}
+                className="text-question"
+              >
+                {this.state.coupons.questionA}
+              </Label>
             </div>
-            <div
-              // style={{ border: "1px solid green" }}
-              name="thumb"
-              onClick={this.clicked.bind(this)}
-              data-id="2"
-              className={
-                this.state.activeThumbDown ? "jello-horizontal" : "none"
-              }
-            >
-              <img
-                name="thumb"
-                value="false"
-                src={thumbDown}
-                width="90px"
-                alt="manito"
-              ></img>
-            </div>
-          </div>
+            <YesNoBtn
+              defaultCheck={this.state.defaultCheckA}
+              wasClick={this.checkBoxToggle}
+            ></YesNoBtn>
 
-          <FormGroup>
-            <Label>
-              <div style={{ margin: "0px auto", textAlign: "center" }}>
-                <div className=" text-title-orange">
-                  Comparte tu experiencia
-                </div>
-                <div className=" text-title-orange">Dejanos un comentario</div>
+            <div className="mt-5 mb-3 text-question">
+              <Label
+                style={{ margin: "0px auto", textAlign: "center" }}
+                className="text-question"
+              >
+                {this.state.coupons.questionB}
+              </Label>
+            </div>
+            <YesNoBtn
+              defaultCheck={this.state.defaultCheckB}
+              wasClick={this.checkBoxToggleB}
+            ></YesNoBtn>
+
+            <div className="justify-content-center mt-5">
+              <Label
+                style={{ margin: "0px auto", textAlign: "center" }}
+                className="text-question"
+              >
+                Volverias a nuestras instalaciones?
+              </Label>
+            </div>
+            <div className="login100-form-titledatos">
+              <div
+                // style={{ border: "1px solid red" }}
+                name="thumb"
+                onClick={this.handleIconClick.bind(this)}
+                data-id="1"
+                className={
+                  this.state.activeThumbUp ? "jello-horizontal" : "none"
+                }
+              >
+                <img
+                  name="thumb"
+                  value="true"
+                  src={thumbUp}
+                  width="90px"
+                  alt="manito"
+                ></img>
               </div>
-            </Label>
-            <div className="wrap-input100datos mt-4 mb-4">
-              <textarea
-                className="input100"
-                onChange={event => this.handleUserInput(event)}
-                style={formFill}
-                type="text"
-                name="comment"
-                id="input-comenta"
-                value={this.state.comment}
-                rows="5"
-                placeholder="..."
-              ></textarea>
-              <span className="focus-input100"></span>
+              <div
+                // style={{ border: "1px solid green" }}
+                name="thumb"
+                onClick={this.clicked.bind(this)}
+                data-id="2"
+                className={
+                  this.state.activeThumbDown ? "jello-horizontal" : "none"
+                }
+              >
+                <img
+                  name="thumb"
+                  value="false"
+                  src={thumbDown}
+                  width="90px"
+                  alt="manito"
+                ></img>
+              </div>
             </div>
-          </FormGroup>
-          <div className="container-login100-form-btn mt-5">
-            <Button onClick={this.toggleModal}>Siguiente..</Button>
-            <SendModal
-              modal={this.state.modal}
-              toggleThis={this.toggleModal}
-              couponInfo={this.state.coupons}
-              qA={this.state.coupons.questionA}
-              qARes={this.state.qACheck}
-              qBRes={this.state.qBCheck}
-              qB={this.state.coupons.questionB}
-              thumy={this.state.thumb}
-              comment={this.state.comment}
-            ></SendModal>
-          </div>
-        </Form>
-      </div>
-    );
+
+            <FormGroup>
+              <Label>
+                <div style={{ margin: "0px auto", textAlign: "center" }}>
+                  <div className=" text-title-orange">
+                    Comparte tu experiencia
+                  </div>
+                  <div className=" text-title-orange">
+                    Dejanos un comentario
+                  </div>
+                </div>
+              </Label>
+              <div className="wrap-input100datos mt-4 mb-4">
+                <textarea
+                  className="input100"
+                  onChange={event => this.handleUserInput(event)}
+                  style={formFill}
+                  type="text"
+                  name="comment"
+                  id="input-comenta"
+                  value={this.state.comment}
+                  rows="5"
+                  placeholder="..."
+                ></textarea>
+                <span className="focus-input100"></span>
+              </div>
+            </FormGroup>
+            <div className="container-login100-form-btn mt-5">
+              <Button onClick={this.toggleModal}>Siguiente..</Button>
+              <SendModal
+                modal={this.state.modal}
+                toggleThis={this.toggleModal}
+                couponInfo={this.state.coupons}
+                qA={this.state.coupons.questionA}
+                qARes={this.state.qACheck}
+                qBRes={this.state.qBCheck}
+                qB={this.state.coupons.questionB}
+                thumy={this.state.thumb}
+                comment={this.state.comment}
+                sendClick={this.sendData}
+              ></SendModal>
+            </div>
+          </Form>
+        </div>
+      );
+    }
   }
 }
 

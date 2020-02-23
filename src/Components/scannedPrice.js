@@ -15,9 +15,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/main.css";
 
 const formBg = {
-  backgroundColor: "white",
+  backgroundColor: "rgba(222,222,222,0.35)",
   padding: "10px 15px",
-  borderRadius: "16px"
+  borderRadius: "16px",
+  height: '100vh'
 };
   
 class PriceGood extends Component {
@@ -111,7 +112,7 @@ class PriceGood extends Component {
             */}
         <div
           className={
-            "col-xs-8 col-md-10 col-sm-8 col-lg-8 col-11 mt-4 ml-auto mr-auto"
+            "col-xs-8 col-md-10 col-sm-8 col-lg-8 col-12 mt-4 ml-auto mr-auto"
           }
           style={formBg}
         >

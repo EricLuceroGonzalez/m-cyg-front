@@ -94,7 +94,9 @@ class SendModal extends Component {
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button color="success">Enviar!</Button>
+          <Button color="success"
+          onClick={() => this.props.sendClick()}
+          >Enviar!</Button>
           <Button color="info" onClick={this.props.toggleThis.bind(this)}>
             volver
           </Button>
