@@ -1,26 +1,66 @@
 import React, { Component } from "react";
-import "./yesNoBtn.css";
-class NoBtn extends Component {
-  state = {
-    isCheckd: this.props.isCheckd
-  };
+import { Button, ButtonGroup } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-//   isClicked = e => {
-//     console.log(`event: ${e.target.value}`);
-//     this.setState({ isCheckd: !this.state.isCheckd });
-//     console.log(`Is Checked: ${this.state.isCheckd}`);
-//   };
+import "./yesNoBtn.css";
+class YesNoBtn extends Component {
+  state = {};
+
+  renderCheckIconY() {
+    if (this.props.defaultCheck === "true") {
+      return (
+        <FontAwesomeIcon
+          className="ml-2"
+          style={{ color: "rgb(50,205,50)" }}
+          icon={faCheckCircle}
+        ></FontAwesomeIcon>
+      );
+    } else {
+      return " ";
+    }
+  }
+  renderCheckIconN() {
+    if (this.props.defaultCheck === "false") {
+      return (
+        <FontAwesomeIcon
+          style={{ color: "rgb(50,205,50)" }}
+          className="ml-2"
+          icon={faCheckCircle}
+        ></FontAwesomeIcon>
+      );
+    } else {
+      return " ";
+    }
+  }
   render() {
     return (
-          <button
-            value={this.props.value}
-            className={this.props.isCheckd ? "btn isClicked" : "btn notClicked"}
-            onClick={(e) => this.props.clica(e)}
+      <div className="col-12 ml-auto mr-auto">
+        <ButtonGroup className="col-12 ml-auto mr-auto">
+          <Button
+            value={true}
+            onClick={e => this.props.wasClick(e)}
+            className={`col-4 ${
+              this.state.qACheck ? "isClicked" : "notClicked"
+            }`}
           >
-            {this.props.label}
-          </button>
+            SI{this.renderCheckIconY()}
+          </Button>
+          <div className="col-4 ml-auto mr-auto"> </div>
+          <Button
+            value={false}
+            onClick={e => this.props.wasClick(e)}
+            // className={btn_sel}
+            className={`col-4 ${
+              this.state.qACheck ? "isClicked" : "notClicked"
+            }`}
+          >
+            No{this.renderCheckIconN()}
+          </Button>
+        </ButtonGroup>
+      </div>
     );
   }
 }
 
-export default NoBtn;
+export default YesNoBtn;
