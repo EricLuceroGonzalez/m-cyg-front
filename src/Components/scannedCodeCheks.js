@@ -66,8 +66,11 @@ class ScannedCodeCheck extends Component {
         couponId: this.state.coupons._id
       })
       .then(res => {
-        console.log(res);
-        this.props.history.push("/checkPrice");
+        console.log(res.data);
+        this.props.history.push({
+          pathname: "/checkPrice",
+          state:{idCoup: this.state.coupons._id}
+          });
       })
       .catch(err => {
         this.props.history.push("/checkError");
@@ -125,7 +128,7 @@ class ScannedCodeCheck extends Component {
     ) {
       cogoToast.warn(
         <div>
-          <div style={{ height: "30vh" }}>
+          <div style={{ height: "60vh" }}>
             <b>Espera!</b>
             <div
               className="col-12"

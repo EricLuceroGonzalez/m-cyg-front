@@ -10,12 +10,13 @@ import ScannedCodeInput from "./Components/scannedCodeInput";
 import ActivateQr from "./Components/activateQr";
 import Thumbs from "./Components/Thumbs";
 import scannedError from "./Components/scannedError";
-import scannedPrice from "./Components/scannedPrice";
+// import scannedPrice from "./Components/scannedPrice";
 import terminosYCond from "./Components/terminosYCond";
 import Win from "./Components/win";
 import ContactInfo from "./Components/ContactInfo";
 import QrReader from "./Components/qrReader";
 import Home from "./Components/HomeComponent";
+import PriceGood from "./Components/scannedPrice";
 // 5e4b35cd121e0c1a1bc620df
 // 5e4c77c255d928001732d1d5
 // 5e4cd14fef193600170f0f8f
@@ -26,6 +27,7 @@ function App() {
         <Nav></Nav>
             <Route exact path="/" component={ScannedCodeCheck} /> 
       <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
+            <Route path="/checkPrice" component={scannedPrice} />
     */}
       <Route exact path="/" component={Home} />
       <Route path="/youWin/:id" component={ScannedCodeCheck} />
@@ -34,7 +36,7 @@ function App() {
       <Route path="/scanned1" component={ScannedCodeInput} />
       <Route path="/activate" component={ActivateQr} />
       <Route path="/terminos" component={terminosYCond} />
-      <Route path="/checkPrice" component={scannedPrice} />
+      <Route path="/checkPrice" component={(theId) => <PriceGood idCoup={theId}></PriceGood>} />
       <Route path="/checkError" component={scannedError} />
       <Route path="/Win" component={Win} />
       <Route path="/contact" component={ContactInfo} />

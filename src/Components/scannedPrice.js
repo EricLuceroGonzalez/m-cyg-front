@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import apis from "../api/index";
 import {
   CardImg,
   Form,
@@ -7,7 +8,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Label,
+  Label
 } from "reactstrap";
 import qrScanned from "../media/Comentaygana-01.png";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
@@ -16,14 +17,27 @@ import "../styles/main.css";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
-  padding: "10px 15px",
-  borderRadius: "16px",
-  height: '100vh'
+  padding: "30px 15px",
+  height: "99vh"
 };
-  
-class PriceGood extends Component {
-  state = {};
 
+class PriceGood extends Component {
+  state = { coupons: "", product: "" };
+
+  componentDidMount() {
+    console.log(
+      `this.props.idCoup: ${this.props.idCoup.location.state.idCoup}`
+    );
+
+    apis
+      .getCoupon(this.props.idCoup.location.state.idCoup)
+      .then(res => {
+        console.log(res.data);
+
+        this.setState({ coupons: res.data, product: res.data.product });
+      })
+      .catch(err => `Get coupons for price: ${err}`);
+  }
   handleIconClick = e => {
     e.preventDefault();
 
@@ -96,6 +110,19 @@ class PriceGood extends Component {
       console.log(e);
     }
   };
+  renderDiscount() {
+    if (this.state.coupons === []) {
+      console.log(this.state);
+      return "";
+    } else {
+      console.log(this.state.product.discount);
+      return (
+        <span className="text-title-orange">
+          {this.state.product.discount}%
+        </span>
+      );
+    }
+  }
   render() {
     return (
       <React.Fragment>
@@ -112,7 +139,7 @@ class PriceGood extends Component {
             */}
         <div
           className={
-            "col-xs-8 col-md-10 col-sm-8 col-lg-8 col-12 mt-4 ml-auto mr-auto"
+            "col-xs-8 col-md-10 col-sm-8 col-lg-8 col-12 ml-auto mr-auto"
           }
           style={formBg}
         >
@@ -141,7 +168,7 @@ class PriceGood extends Component {
                 style={{ margin: "0px auto", textAlign: "center" }}
                 className="text-question"
               >
-                Ganaste un premio por comentar tu experiencia
+                Ganaste un {this.renderDiscount()} de descuento
               </Label>
             </div>
 

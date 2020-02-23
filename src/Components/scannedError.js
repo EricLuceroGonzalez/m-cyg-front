@@ -14,9 +14,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
-  padding: "10px 15px",
+  padding: "30px 15px",
   borderRadius: "16px",
-  height: '100vh'
+  height: '99vh'
 };
 
 class PriceError extends Component {
@@ -109,7 +109,7 @@ class PriceError extends Component {
             </div>
             */}
         <div
-          className={`col-xs-10 col-md-10 col-sm-12 col-lg-8 col-12 mt-4 ml-auto mr-auto ${this.state.formClassName}`}
+          className={`col-xs-10 col-md-10 col-sm-12 col-lg-8 col-12 ml-auto mr-auto ${this.state.formClassName}`}
           style={formBg}
         >
           <div style={{ transform: "rotate(-4deg)", textAlign: "center" }}>
