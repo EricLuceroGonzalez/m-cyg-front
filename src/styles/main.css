@@ -738,15 +738,27 @@ iframe {
   color: #ff6a00;
   /* color: #3b5998; */
 }
-.showPremio{
+.showPremio {
   font-family: Montserrat-Light;
   color: gray;
-  font-size: 0.75em;  
+  font-size: 0.75em;
 }
 .text-w {
   font-family: Montserrat-SemiBold;
   text-transform: uppercase;
   color: white;
+}
+
+.text-green {
+  color: rgb(50, 205, 50);
+}
+
+.text-orange {
+  color: #ff6a00;
+}
+
+.text-blue {
+  color: #3b5998;
 }
 
 .text-title-blue {
@@ -755,7 +767,7 @@ iframe {
 }
 .text-title-orange {
   font-family: Montserrat-BlackItalic;
-  color:  #ff6a00;
+  color: #ff6a00;
 }
 
 .text-title-gray {
@@ -878,5 +890,3 @@ iframe {
   background-color: blue;
   box-shadow: 2px 2px 2px #3b5998;
 }
-
-

@@ -8,7 +8,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Label
+  Label,
+  Table
 } from "reactstrap";
 import qrScanned from "../media/Comentaygana-01.png";
 // import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
@@ -35,7 +36,7 @@ const code = {
 const cargo = 0.11;
 
 class PriceGood extends Component {
-  state = { coupons: "", product: "", modal: false };
+  state = { coupons: "", product: "", modal: true };
 
   componentDidMount() {
     // console.log(
@@ -44,7 +45,6 @@ class PriceGood extends Component {
 
     // .getCoupon(this.props.idCoup.location.state.idCoup)
     // .getCoupon(this.props.match.params.id)
-
     apis
       .getCoupon(this.props.idCoup.location.state.idCoup)
       .then(res => {
@@ -116,6 +116,7 @@ class PriceGood extends Component {
     } else {
       return (
         <span className="text-title-orange">
+          $
           {(
             this.state.product.priceFinal +
             this.state.product.priceOriginal * 0.07 +
@@ -179,9 +180,9 @@ class PriceGood extends Component {
               </div>
             </Form>
             <Modal
+              className="col-11 mr-auto ml-auto"
               isOpen={this.state.modal}
               toggle={this.toggleModal}
-              style={{ height: "75vh" }}
             >
               <ModalHeader
                 toggle={this.toggleModal}
@@ -194,47 +195,77 @@ class PriceGood extends Component {
                 Detalles del cupon:
               </ModalHeader>
               {this.renderOfferCode()}
-              <div className="col-6 ml-auto mr-auto">
-                <CardImg
-                  alt="Card image cap....."
-                  width="65%"
-                  src={theLogo}
-                ></CardImg>
-              </div>
+
               <ModalBody>
                 <div
-                  style={{ border: "4px solid #ff6a00", borderRadius: "12px" }}
+                  style={{
+                    border: "4px solid #ff6a00",
+                    borderRadius: "12px",
+                    height: "80vh",
+                    maxHeight: "calc(80vh - 160px)",
+                    overflowY: "auto"
+                  }}
                 >
                   <div
-                    style={{ margin: "0px auto", textAlign: "center" }}
-                    className="text-question"
+                    className=" col-12 text-question mr-auto ml-auto"
+                    style={{ margin: "20px auto", textAlign: "center" }}
                   >
                     {this.renderDiscount()} de descuento
                     <div>
                       <p className="text-b">{this.state.product.name}</p>
                       <p className="text-b">{this.state.product.description}</p>
                     </div>
-                    <div className="mt-4 row justify-content-start">
-                      <p className="col-8 showPremio">Precio:</p>{" "}
-                      <span>${this.state.product.priceOriginal}</span>
-                      <p className="col-8 showPremio">Descuento:</p>{" "}
-                      <span>${this.state.product.cost}</span>
-                      <p className="col-8 showPremio">
-                        Cargo por servicio:
-                      </p>{" "}
-                      <span>${cargo}</span>
-                      <p className="col-8 showPremio">Impuestos:</p>{" "}
-                      <span>
-                        ${(this.state.product.priceOriginal * 0.07).toFixed(2)}
-                      </span>
-                      <p className=" col-8 showPremio">Total a pagar:</p>{" "}
-                      <span>${this.renderTotal()}</span>
+                    <div
+                      style={{
+                        margin: "50px auto 5px auto",
+                        textAlign: "center"
+                      }}
+                      className="row justify-content-start"
+                    >
+                      <Table borderless size="sm">
+                        <tbody className="showPremio">
+                          <tr>
+                            <td>Precio</td>
+                            <td align="left">
+                              $
+                              {this.state.coupons.product.priceOriginal.toFixed(
+                                2
+                              )}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Descuento</td>
+                            <td align="left" className="text-green">
+                              ${this.state.coupons.product.cost}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Impuestos</td>
+                            <td align="left">
+                              $
+                              {(
+                                this.state.coupons.product.priceOriginal * 0.07
+                              ).toFixed(2)}
+                            </td>
+                          </tr>
+                          <tr style={{ borderTop: "2px solid #3b5998" }}>
+                            <td>Total a pagar</td>
+                            <td align="left">{this.renderTotal()}</td>
+                          </tr>
+                        </tbody>
+                      </Table>
                     </div>
                   </div>
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button color="success">seguir!</Button>
+                <div className="col-3 mr-auto">
+                  <CardImg
+                    alt="Card image cap....."
+                    width="65%"
+                    src={theLogo}
+                  ></CardImg>
+                </div>
                 <Button color="secondary" onClick={this.toggleModal.bind(this)}>
                   volver
                 </Button>
@@ -248,3 +279,14 @@ class PriceGood extends Component {
 }
 
 export default PriceGood;
+
+// {<p className="col-8 showPremio">Precio:</p>{" "}
+// <span>${this.state.product.priceOriginal}</span>
+// <p className="col-8 showPremio">Descuento:</p>{" "}
+// <span>${this.state.product.cost}</span>
+// <p className="col-8 showPremio">Impuestos:</p>{" "}
+// <span>
+//   ${(this.state.product.priceOriginal * 0.07).toFixed(2)}
+// </span>
+// <p className=" col-8 showPremio">Total a pagar:</p>{" "}
+// <span>${this.renderTotal()}</span>}
