@@ -7,9 +7,7 @@ import thumbUp from "../media/comentaygana-10.png";
 import thumbDown from "../media/comentaygana-10upside.png";
 import "./yesNoBtn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPuzzlePiece,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
 import YesNoBtn from "./NoBtn";
 import SendModal from "./sendModal";
 import LoadingPage from "./LoadingPage";
@@ -54,6 +52,15 @@ class ScannedCodeCheck extends Component {
       .catch(err => console.log(err));
   }
 
+  // useEffect(){
+  //   apis
+  //   .getCoupon(this.props.match.params.id)
+  //   .then(res => {
+  //     this.setState({ coupons: res.data, questionA: res.data.questionA });
+  //   })
+  //   .catch(err => console.log(err));
+  // }
+
   sendData = () => {
     console.log("\n\n\n\n\n inside sendFormData()");
     console.log(this.state);
@@ -69,8 +76,8 @@ class ScannedCodeCheck extends Component {
         console.log(res.data);
         this.props.history.push({
           pathname: "/checkPrice",
-          state:{idCoup: this.state.coupons._id}
-          });
+          state: { idCoup: this.state.coupons._id }
+        });
       })
       .catch(err => {
         this.props.history.push("/checkError");
@@ -460,7 +467,6 @@ class ScannedCodeCheck extends Component {
   };
   // ¿?
   renderQuestions = theQuestion => {
-
     if (
       this.state.coupons[theQuestion][0] !== "¿" &&
       this.state.coupons[theQuestion][
@@ -669,8 +675,11 @@ class ScannedCodeCheck extends Component {
             </FormGroup>
             <div className="container-login100-form-btn mt-5 ml-auto mr-auto">
               <Button
-              className='ml-auto mr-auto nextBtn'
-               onClick={this.toggleModal}>Siguiente</Button>
+                className="ml-auto mr-auto nextBtn"
+                onClick={this.toggleModal}
+              >
+                Siguiente
+              </Button>
               <SendModal
                 modal={this.state.modal}
                 toggleThis={this.toggleModal}

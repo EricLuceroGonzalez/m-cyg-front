@@ -28,6 +28,7 @@ function App() {
             <Route exact path="/" component={ScannedCodeCheck} /> 
       <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
             <Route path="/checkPrice" component={scannedPrice} />
+                  <Route exact path="/" component={Home} />
     */}
       <Route exact path="/" component={Home} />
       <Route path="/youWin/:id" component={ScannedCodeCheck} />
@@ -36,7 +37,8 @@ function App() {
       <Route path="/scanned1" component={ScannedCodeInput} />
       <Route path="/activate" component={ActivateQr} />
       <Route path="/terminos" component={terminosYCond} />
-      <Route path="/checkPrice" component={(theId) => <PriceGood idCoup={theId}></PriceGood>} />
+     <Route path="/checkPrice" component={(theId) => <PriceGood idCoup={theId}></PriceGood>} />
+      {/**<Route path="/checkPrice/:id" component={PriceGood} /> */}
       <Route path="/checkError" component={scannedError} />
       <Route path="/Win" component={Win} />
       <Route path="/contact" component={ContactInfo} />
