@@ -5,6 +5,7 @@
   background-color: rgba(222, 222, 222, 0.25);
   color: rgba(190, 190, 190, 0.75);
   font-weight: bold;
+  font-size: 0.9em;
   border: none;
   box-shadow: 2px 3px 4px gray;
   font-family: Montserrat-BlackItalic;
@@ -15,6 +16,7 @@
   color: gray;
   font-family: Montserrat-SemiBold;
   text-transform: uppercase;
+  font-size: 0.9em;
   border: none;
   box-shadow: 2px 3px 4px gray;
 }

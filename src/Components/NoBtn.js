@@ -36,27 +36,29 @@ class YesNoBtn extends Component {
   render() {
     return (
       <div className="col-12 ml-auto mr-auto">
-        <ButtonGroup className="col-12 ml-auto mr-auto">
+        <ButtonGroup className="col-12 ml-auto mr-auto mb-3">
+        <div className="col-2 ml-auto mr-auto"> </div>
           <Button
             value={true}
             onClick={e => this.props.wasClick(e)}
-            className={`col-4 ${
+            className={`col-3 ${
               this.state.qACheck ? "isClicked" : "notClicked"
             }`}
           >
             SI{this.renderCheckIconY()}
           </Button>
-          <div className="col-4 ml-auto mr-auto"> </div>
+          <div className="col-2 ml-auto mr-auto"> </div>
           <Button
             value={false}
             onClick={e => this.props.wasClick(e)}
             // className={btn_sel}
-            className={`col-4 ${
+            className={`col-3 ${
               this.state.qACheck ? "isClicked" : "notClicked"
             }`}
           >
             No{this.renderCheckIconN()}
           </Button>
+          <div className="col-2 ml-auto mr-auto"> </div>
         </ButtonGroup>
       </div>
     );

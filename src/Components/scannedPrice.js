@@ -21,7 +21,9 @@ import theLogo from "../media/logo00.png";
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
   padding: "30px 15px",
-  height: "99vh"
+  height: "80vh",
+  maxHeight: "calc(80vh - 160px)",
+  overflowY: "auto"
 };
 
 const code = {

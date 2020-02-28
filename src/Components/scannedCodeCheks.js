@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Label, CardImg, Form, Button, FormGroup } from "reactstrap";
 // import { Link } from "react-router-dom";
-import qrScanned from "../media/logo00.png";
+import theLogo from "../media/logo00.png";
 import apis from "../api";
 import thumbUp from "../media/comentaygana-10.png";
 import thumbDown from "../media/comentaygana-10upside.png";
@@ -16,7 +16,10 @@ import cogoToast from "cogo-toast";
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
   padding: "10px 15px",
-  borderRadius: "16px"
+  borderRadius: "16px",
+  height: "100vh",
+  maxHeight: "100vh",
+  overflowY: "auto"
 };
 
 const formFill = {
@@ -568,11 +571,11 @@ class ScannedCodeCheck extends Component {
           className={`col-12 col-sm-10 col-md-8 col-lg-8 ml-auto mr-auto ${this.state.formClassName}`}
           style={formBg}
         >
-          <div className="col-5 mt-4 ml-auto mr-auto">
+          <div className="col-5 mt-2 mb-3 ml-auto mr-auto">
             <CardImg
               alt="Card image cap....."
               width="65%"
-              src={qrScanned}
+              src={theLogo}
             ></CardImg>
           </div>
           <Form
@@ -580,7 +583,7 @@ class ScannedCodeCheck extends Component {
             className="col-sm-10 col-xs-12 ml-auto mr-auto"
             onReset={this.resetForm}
           >
-            <div className="mt-5 mb-3 justify-content-center text-question">
+            <div className="mb-2 justify-content-center text-question">
               {this.renderQuestions("questionA")}
             </div>
             <YesNoBtn
@@ -588,7 +591,7 @@ class ScannedCodeCheck extends Component {
               wasClick={this.checkBoxToggle}
             ></YesNoBtn>
 
-            <div className="mt-5 mb-3 text-question">
+            <div className="mb-2 text-question">
               {this.renderQuestions("questionB")}
             </div>
             <YesNoBtn
@@ -596,12 +599,12 @@ class ScannedCodeCheck extends Component {
               wasClick={this.checkBoxToggleB}
             ></YesNoBtn>
 
-            <div className="justify-content-center mt-5">
+            <div className="justify-content-center mt-2">
               <Label
                 style={{
                   margin: "0px auto",
                   textAlign: "center",
-                  fontSize: "0.85em"
+                  fontSize: "0.75em"
                 }}
                 className="text-question"
               >
@@ -611,13 +614,14 @@ class ScannedCodeCheck extends Component {
               </Label>
             </div>
             <div className="login100-form-titledatos">
+            <div className="col-2"> </div>
               <div
                 // style={{ border: "1px solid red" }}
                 name="thumb"
                 onClick={this.handleIconClick.bind(this)}
                 data-id="1"
                 className={
-                  this.state.activeThumbUp ? "jello-horizontal" : "none"
+                  this.state.activeThumbUp ? "col-4 jello-horizontal" : "none"
                 }
               >
                 <img
@@ -628,13 +632,14 @@ class ScannedCodeCheck extends Component {
                   alt="manito"
                 ></img>
               </div>
+              <div className="col-2"> </div>
               <div
                 // style={{ border: "1px solid green" }}
                 name="thumb"
                 onClick={this.clicked.bind(this)}
                 data-id="2"
                 className={
-                  this.state.activeThumbDown ? "jello-horizontal" : "none"
+                  this.state.activeThumbDown ? "col-4 jello-horizontal" : "none"
                 }
               >
                 <img
@@ -645,10 +650,12 @@ class ScannedCodeCheck extends Component {
                   alt="manito"
                 ></img>
               </div>
+              <div className="col-2"> </div>
             </div>
 
             <FormGroup>
-              <Label>
+              {/*
+                <Label>
                 <div style={{ margin: "0px auto", textAlign: "center" }}>
                   <div className=" text-title-orange">
                     Comparte tu experiencia
@@ -658,7 +665,8 @@ class ScannedCodeCheck extends Component {
                   </div>
                 </div>
               </Label>
-              <div className="wrap-input100datos mt-4 mb-4">
+ */}
+              <div className="wrap-input100datos mt-3 mb-2">
                 <textarea
                   className="input100"
                   onChange={event => this.handleUserInput(event)}
@@ -667,18 +675,18 @@ class ScannedCodeCheck extends Component {
                   name="comment"
                   id="input-comenta"
                   value={this.state.comment}
-                  rows="5"
-                  placeholder="..."
+                  rows="3"
+                  placeholder={`Comparte tu experiencia y deja un comentario 😀`}
                 ></textarea>
                 <span className="focus-input100"></span>
               </div>
             </FormGroup>
-            <div className="container-login100-form-btn mt-5 ml-auto mr-auto">
+            <div className="container-login100-form-btn mt-4 ml-auto mr-auto">
               <Button
-                className="ml-auto mr-auto nextBtn"
+                className="col-12 ml-auto mr-auto nextBtn"
                 onClick={this.toggleModal}
               >
-                Siguiente
+                Siguiente{'\u2728'}
               </Button>
               <SendModal
                 modal={this.state.modal}
