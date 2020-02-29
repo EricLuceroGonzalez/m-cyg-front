@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
-// import Nav from "./Components/NavBarCollapse";
+import { Provider } from "react-redux";
+import store from "./store";
 
 import ScannedCodeCheck from "./Components/scannedCodeCheks";
 import ScannedCodeInput from "./Components/scannedCodeInput";
@@ -22,32 +23,34 @@ import PriceGood from "./Components/scannedPrice";
 // 5e4cd14fef193600170f0f8f
 function App() {
   return (
-    <Router>
-      {/*false
-        <Nav></Nav>
-            <Route exact path="/" component={ScannedCodeCheck} /> 
-      <Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
-            <Route path="/checkPrice" component={scannedPrice} />
-                  <Route exact path="/" component={Home} />
-    */}
-      <Route exact path="/" component={Home} />
-      <Route path="/youWin/:id" component={ScannedCodeCheck} />
-      <Route path="/aComment" component={Thumbs} />
-      <Route path="/scanned" component={ScannedCodeCheck} />
-      <Route path="/scanned1" component={ScannedCodeInput} />
-      <Route path="/activate" component={ActivateQr} />
-      <Route path="/terminos" component={terminosYCond} />
-      {/*      <Route path="/checkPrice/:id" component={PriceGood} />
-       */}
-      <Route
-        path="/checkPrice"
-        component={theId => <PriceGood idCoup={theId}></PriceGood>}
-      />
-      <Route path="/checkError" component={scannedError} />
-      <Route path="/Win" component={Win} />
-      <Route path="/contact" component={ContactInfo} />
-      <Route path="/ActivateCamera" component={QrReader} />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        {/*false
+  <Nav></Nav>
+      <Route exact path="/" component={ScannedCodeCheck} /> 
+<Route exact path="/details/:id" render={(props) => <ScannedCodeCheck globalStore={globalStore} {...props} /> } />
+      <Route path="/checkPrice" component={scannedPrice} />
+            <Route exact path="/" component={Home} />
+*/}
+        <Route exact path="/" component={Home} />
+        <Route path="/youWin/:id" component={ScannedCodeCheck} />
+        <Route path="/aComment" component={Thumbs} />
+        <Route path="/scanned" component={ScannedCodeCheck} />
+        <Route path="/scanned1" component={ScannedCodeInput} />
+        <Route path="/activate" component={ActivateQr} />
+        <Route path="/terminos" component={terminosYCond} />
+        {/*      <Route path="/checkPrice/:id" component={PriceGood} />
+         */}
+        <Route
+          path="/checkPrice"
+          component={theId => <PriceGood idCoup={theId}></PriceGood>}
+        />
+        <Route path="/checkError" component={scannedError} />
+        <Route path="/Win" component={Win} />
+        <Route path="/contact" component={ContactInfo} />
+        <Route path="/ActivateCamera" component={QrReader} />
+      </Router>
+    </Provider>
   );
 }
 
