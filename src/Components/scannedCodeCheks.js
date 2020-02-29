@@ -680,7 +680,11 @@ class ScannedCodeCheck extends Component {
                 className="col-12 ml-auto mr-auto nextBtn"
                 onClick={this.toggleModal}
               >
-                Siguiente{"\u2728"}
+                Siguiente
+                <span role="img" aria-label="star-dust">
+                  {" "}
+                  {"\u2728"}
+                </span>
               </Button>
               <SendModal
                 modal={this.state.modal}

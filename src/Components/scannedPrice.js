@@ -41,7 +41,6 @@ class PriceGood extends Component {
   state = { coupons: "", product: "", modal: false };
 
   componentDidMount() {
-    // console.log(
     //   `this.props.idCoup: ${this.props.idCoup.location.state.idCoup}`
     // );
 
@@ -50,8 +49,6 @@ class PriceGood extends Component {
     apis
       .getCoupon(this.props.idCoup.location.state.idCoup)
       .then(res => {
-        console.log(res.data);
-        console.log(res.data.product);
         this.setState({ coupons: res.data, product: res.data.product });
       })
       .catch(err => `Get coupons for price: ${err}`);
@@ -65,14 +62,10 @@ class PriceGood extends Component {
       e.target.attributes.value.value !== null &&
       typeof e.target.attributes.value.value !== "undefined"
     ) {
-      console.log("-------------");
       const name = e.target.attributes.name.value;
-      console.log(name);
       const IconValue = e.target.attributes.value.value;
-      console.log(`icon value: ${IconValue}`);
       this.setState({ [name]: IconValue });
     }
-    console.log(this.state);
   };
 
   toggleModal = e => {
@@ -100,10 +93,8 @@ class PriceGood extends Component {
 
   renderDiscount() {
     if (this.state.coupons === []) {
-      console.log(this.state);
       return "";
     } else {
-      console.log(this.state.product.discount);
       return (
         <span className="text-title-orange">
           {this.state.product.discount}%
@@ -113,7 +104,6 @@ class PriceGood extends Component {
   }
   renderTotal = () => {
     if (this.state.coupons === []) {
-      console.log(this.state);
       return "";
     } else {
       return (
@@ -166,7 +156,7 @@ class PriceGood extends Component {
                   style={{ margin: "0px auto", textAlign: "center" }}
                   className="text-question"
                 >
-                  Ganaste un {this.renderDiscount()} de descuento
+                  Ganaste un {this.renderDiscount()} de descuento😀
                 </Label>
               </div>
 
@@ -177,7 +167,7 @@ class PriceGood extends Component {
                   style={{ textTransform: "uppercase", background: "#ff6a00" }}
                   onClick={this.toggleModal}
                 >
-                  Premio
+                  ver Premio <span role='img' aria-label='gift-emoji'> 🎁</span>
                 </Button>
               </div>
             </Form>
