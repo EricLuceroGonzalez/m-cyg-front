@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Button } from "reactstrap";
 import classnames from "classnames";
 import Phone from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/authActions";
 
 const formBg = {
   background: "white",
@@ -52,6 +55,14 @@ class Register extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
@@ -65,6 +76,7 @@ class Register extends Component {
       phoneNumber: this.state.phoneNumber,
       birthdate: this.state.birthdate
     };
+    this.props.registerUser(newUser, this.props.history);
     console.log(newUser);
   };
   render() {
@@ -215,4 +227,15 @@ class Register extends Component {
     );
   }
 }
-export default Register;
+
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));

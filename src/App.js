@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./stores";
 
 import ScannedCodeCheck from "./Components/scannedCodeCheks";
 import ScannedCodeInput from "./Components/scannedCodeInput";
