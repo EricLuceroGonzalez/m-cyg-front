@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardImg } from "reactstrap";
 import qr from "../media/logo00.png";
 
-class Home extends Component {
+class CheckViewPort extends Component {
   // state = {
   //   title: this.props.title,
   //   description: this.props.description,
@@ -56,4 +56,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default CheckViewPort;

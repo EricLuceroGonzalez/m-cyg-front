@@ -119,6 +119,11 @@ class PriceGood extends Component {
     }
   };
 
+  renderViewPort() {
+    const height = window.innerHeight();
+    const width = window.innerWidth();
+    return <p>{height} x {width}</p>
+  }
   render() {
     if (this.state.coupons === "") {
       return <LoadingPage></LoadingPage>;
@@ -167,7 +172,11 @@ class PriceGood extends Component {
                   style={{ textTransform: "uppercase", background: "#ff6a00" }}
                   onClick={this.toggleModal}
                 >
-                  ver Premio <span role='img' aria-label='gift-emoji'> 🎁</span>
+                  ver Premio{" "}
+                  <span role="img" aria-label="gift-emoji">
+                    {" "}
+                    🎁
+                  </span>
                 </Button>
               </div>
             </Form>
