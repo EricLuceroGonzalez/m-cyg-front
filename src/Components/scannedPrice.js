@@ -16,13 +16,13 @@ import qrScanned from "../media/Comentaygana-01.png";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/main.css";
 import LoadingPage from "./LoadingPage";
-import theLogo from "../media/logo00.png";
+import theLogo from "../media/Comentaygana-justWords.png";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
   padding: "30px 15px",
-  height: "80vh",
-  maxHeight: "calc(80vh - 160px)",
+  height: "99vh",
+  maxHeight: "99vh",
   overflowY: "auto"
 };
 
@@ -38,7 +38,7 @@ const code = {
 const cargo = 0.11;
 
 class PriceGood extends Component {
-  state = { coupons: "", product: "", modal: true };
+  state = { coupons: "", product: "", modal: false };
 
   componentDidMount() {
     // console.log(
@@ -161,7 +161,7 @@ class PriceGood extends Component {
               className="col-sm-8 col-xs-12 ml-auto mr-auto"
               onReset={this.resetForm}
             >
-              <div className="justify-content-center mt-5">
+              <div className="justify-content-center mt-5 mb-5">
                 <Label
                   style={{ margin: "0px auto", textAlign: "center" }}
                   className="text-question"
@@ -171,7 +171,7 @@ class PriceGood extends Component {
               </div>
 
               {/* <Button onClick={this.state.sendTeamData}>Submit</Button> */}
-              <div className="container-login100-form-btn m-t-25">
+              <div className="container-login100-form-btn mt-5">
                 <Button
                   className="login100-form-btn text-title-white"
                   style={{ textTransform: "uppercase", background: "#ff6a00" }}
@@ -261,14 +261,17 @@ class PriceGood extends Component {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <div className="col-3 mr-auto">
+                <div className="col-5 mr-auto">
                   <CardImg
                     alt="Card image cap....."
                     width="65%"
                     src={theLogo}
                   ></CardImg>
                 </div>
-                <Button color="secondary" onClick={this.toggleModal.bind(this)}>
+                <Button
+                  color="btn btn-outline-info"
+                  onClick={this.toggleModal.bind(this)}
+                >
                   volver
                 </Button>
               </ModalFooter>

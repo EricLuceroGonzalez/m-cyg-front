@@ -167,15 +167,9 @@ class ScannedCodeCheck extends Component {
             >
               {this.renderQuestions("questionB")}
             </div>
-            <div
-              style={{
-                marginTop: "20px",
-                backgroundColor: "rgba(244,245,20,0.5)"
-              }}
-            >
+            <div className="mt-3">
               <Label
                 style={{
-                  margin: "0px auto",
                   textAlign: "center",
                   fontSize: "0.85em"
                 }}
@@ -614,7 +608,7 @@ class ScannedCodeCheck extends Component {
               </Label>
             </div>
             <div className="login100-form-titledatos">
-            <div className="col-2"> </div>
+              <div className="col-2"> </div>
               <div
                 // style={{ border: "1px solid red" }}
                 name="thumb"
@@ -686,7 +680,7 @@ class ScannedCodeCheck extends Component {
                 className="col-12 ml-auto mr-auto nextBtn"
                 onClick={this.toggleModal}
               >
-                Siguiente{'\u2728'}
+                Siguiente{"\u2728"}
               </Button>
               <SendModal
                 modal={this.state.modal}

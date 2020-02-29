@@ -27,15 +27,25 @@ class SendModal extends Component {
 
   renderThumb = () => {
     if (this.props.thumy === "false") {
-      return <FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon>;
+      return (
+        <FontAwesomeIcon
+          style={{ color: "red" }}
+          icon={faThumbsDown}
+        ></FontAwesomeIcon>
+      );
     } else {
-      return <FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon>;
+      return (
+        <FontAwesomeIcon
+          style={{ color: "rgb(40,210,105)" }}
+          icon={faThumbsUp}
+        ></FontAwesomeIcon>
+      );
     }
   };
   tenderResponseYes = () => {
     return (
       <FontAwesomeIcon
-        style={{ color: "green" }}
+        style={{ color: "rgb(40,210,105)" }}
         icon={faCheckCircle}
       ></FontAwesomeIcon>
     );
@@ -128,6 +138,7 @@ class SendModal extends Component {
         isOpen={this.props.modal}
         toggle={this.props.toggleThis}
         className="col-11 mr-auto ml-auto mt-5"
+        style={{ fontSize: "0.75em" }}
       >
         <ModalHeader toggle={this.props.toggleThis} style={fontType}>
           Verifica!{" "}
@@ -146,7 +157,7 @@ class SendModal extends Component {
                 <div
                   className="row mt-4"
                   style={{
-                    backgroundColor: 'rgba(245,245,245,0.7)',
+                    backgroundColor: "rgba(245,245,245,0.7)",
                     boxShadow: "4px 4px 3px rgba(196,190,196,0.75)"
                   }}
                 >
@@ -159,8 +170,10 @@ class SendModal extends Component {
                 </div>
                 <div
                   className="row mt-4"
-                  style={{ backgroundColor: 'rgba(245,245,245,0.7)',
-                    boxShadow: "4px 4px 3px rgba(196,190,196,0.75)" }}
+                  style={{
+                    backgroundColor: "rgba(245,245,245,0.7)",
+                    boxShadow: "4px 4px 3px rgba(196,190,196,0.75)"
+                  }}
                 >
                   <div className="col-10">{this.renderQuestions("qB")}</div>
                   <div className="col-2">
@@ -171,8 +184,10 @@ class SendModal extends Component {
                 </div>
                 <div
                   className="row mt-4"
-                  style={{ backgroundColor: 'rgba(245,245,245,0.7)',
-                    boxShadow: "4px 4px 3px rgba(196,190,196,0.75)" }}
+                  style={{
+                    backgroundColor: "rgba(245,245,245,0.7)",
+                    boxShadow: "4px 4px 3px rgba(196,190,196,0.75)"
+                  }}
                 >
                   <div className="col-10">
                     <Label
@@ -193,11 +208,15 @@ class SendModal extends Component {
                 </div>
                 <div
                   className="mt-4 col-12"
-                  style={{ backgroundColor: 'rgba(245,245,245,0.7)',
-                    boxShadow: "4px 4px 3px rgba(196,190,196,0.75)" }}
+                  style={{
+                    backgroundColor: "rgba(245,245,245,0.7)",
+                    boxShadow: "4px 4px 3px rgba(196,190,196,0.75)"
+                  }}
                 >
                   <Label className="text-o-s">Comentario:</Label>
-                  <div className="col-12 text-title-gray mt-2">{this.props.comment}</div>
+                  <div className="col-12 text-title-gray mt-2">
+                    {this.props.comment}
+                  </div>
                 </div>
               </div>
             </div>
