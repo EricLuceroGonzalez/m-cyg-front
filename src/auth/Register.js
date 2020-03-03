@@ -6,7 +6,7 @@ import Phone from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { registerUser } from "../actions/authActions";
 
 const formBg = {
   background: "white",
