@@ -7,7 +7,6 @@ import Login from "../auth/Login";
 import PhoneInput from "../auth/PhoneIput";
 
 class Home extends Component {
-
   render() {
     return (
       <div
@@ -20,18 +19,16 @@ class Home extends Component {
       >
         <Link to={"/scanned"}>
           <Card
-            className="col-6 col-sm-8 col-md-4 col-lg-4 mr-auto ml-auto"
+            className="col-6 col-sm-4 col-md-2 col-lg-2 mr-auto ml-auto"
             style={{
               boxShadow: "4px 3px 6px black",
-              padding: "100px 20px"
+              padding: "40px 20px"
             }}
           >
             <CardImg top width="30%" src={qr} alt="Card image cap"></CardImg>
           </Card>
         </Link>
 
-<Register></Register>
-        
       </div>
     );
   }
