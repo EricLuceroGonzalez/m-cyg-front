@@ -2,14 +2,24 @@
 import api from "../api/index";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types"; // Register User
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
+
+// Register User
 export const registerUser = (userData, history) => dispatch => {
+  console.log(history.location.state.data);
+
   api
     .postRegister(userData)
     .then(res => {
       console.log("Sending register!");
-      history.push("/login"); // re-direct to login on successful register
-      console.log("Register OK!");
+      // history.push("/login"); // re-direct to login on successful register
+      // Another redirecting:
+      history.push({
+        pathname: "/login",
+        state: { from: history.location.state.data }
+        // state: { from: props.location }
+      });
+      console.log(`Register OK!\n user: ${res.data}`);
     })
     .catch(err => {
       console.log("Error on register:");
@@ -17,10 +27,13 @@ export const registerUser = (userData, history) => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       });
-    });
-}; // Login - get user token
+    }); 
+};
+
+// Login - get user token
 export const loginUser = userData => dispatch => {
-  api.postLogin(userData)
+  api
+    .postLogin(userData)
     .then(res => {
       // Save to localStorage// Set token to localStorage
       const { token } = res.data;
@@ -38,7 +51,9 @@ export const loginUser = userData => dispatch => {
         payload: err.response.data
       })
     );
-}; // Set logged in user
+};
+
+// Set logged in user
 export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,

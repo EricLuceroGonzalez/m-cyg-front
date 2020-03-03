@@ -54,10 +54,15 @@ class Register extends Component {
       errors: {}
     };
   }
+
+  componentWillMount(){
+    console.log(this.props.history);
+    
+  }
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/gana/:id");
     }
   }
 
@@ -71,6 +76,7 @@ class Register extends Component {
 
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
+    
   };
   onSubmit = e => {
     e.preventDefault();

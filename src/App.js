@@ -58,16 +58,11 @@ function App() {
         <Route path="/scanned1" component={ScannedCodeInput} />
         <Route path="/activate" component={ActivateQr} />
         <Route path="/terminos" component={terminosYCond} />
-        {/*      <Route path="/checkPrice/:id" component={PriceGood} />
-         */}
-        <Route path="/Win" component={Win} />
+        {/*      <Route path="/checkPrice/:id" component={PriceGood} />*/}
         <Route path="/contact" component={ContactInfo} />
-        <Route path="/ActivateCamera" component={QrReader} />
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
-
-          <PrivateRoute path="/youWin/:id" component={ScannedCodeCheck} />
-
+          <PrivateRoute path="/gana/:id" component={ScannedCodeCheck} />
           <PrivateRoute
             path="/checkPrice"
             component={theId => <PriceGood idCoup={theId}></PriceGood>}

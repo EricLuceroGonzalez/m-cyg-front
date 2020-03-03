@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import apis from "../api/index";
+import apis from "../../api/index";
 import {
   CardImg,
   Form,
@@ -11,12 +11,12 @@ import {
   Label,
   Table
 } from "reactstrap";
-import qrScanned from "../media/Comentaygana-01.png";
+import qrScanned from "../../media/Comentaygana-01.png";
 // import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../styles/main.css";
-import LoadingPage from "./LoadingPage";
-import theLogo from "../media/Comentaygana-justWords.png";
+import "../../styles/main.css";
+import LoadingPage from "../LoadingPage";
+import theLogo from "../../media/Comentaygana-justWords.png";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",

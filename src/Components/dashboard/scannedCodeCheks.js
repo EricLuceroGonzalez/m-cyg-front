@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import { Label, CardImg, Form, Button, FormGroup } from "reactstrap";
 // import { Link } from "react-router-dom";
-import theLogo from "../media/logo00.png";
-import apis from "../api";
-import thumbUp from "../media/comentaygana-10.png";
-import thumbDown from "../media/comentaygana-10upside.png";
-import "./yesNoBtn.css";
+import theLogo from "../../media/logo00.png";
+import apis from "../../api/index";
+import thumbUp from "../../media/comentaygana-10.png";
+import thumbDown from "../../media/comentaygana-10upside.png";
+import "../yesNoBtn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
-import YesNoBtn from "./NoBtn";
-import SendModal from "./sendModal";
-import LoadingPage from "./LoadingPage";
+import YesNoBtn from "../NoBtn";
+import SendModal from "../sendModal";
+import LoadingPage from "../LoadingPage";
 import cogoToast from "cogo-toast";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -31,6 +33,7 @@ const formFill = {
 
 class ScannedCodeCheck extends Component {
   state = {
+    user: "",
     lists: "",
     formClassName: "",
     coupons: [],
@@ -44,6 +47,11 @@ class ScannedCodeCheck extends Component {
     defaultCheck: "",
     modal: false
   };
+
+  componentWillMount() {
+    this.setState({ user: this.props.auth.user.id });
+    console.log(this.state);
+  }
 
   componentDidMount() {
     // console.log(`The id props: ${this.props.match.params.id}`);
@@ -687,6 +695,7 @@ class ScannedCodeCheck extends Component {
                 </span>
               </Button>
               <SendModal
+                reviwer={this.state.user}
                 modal={this.state.modal}
                 toggleThis={this.toggleModal}
                 couponInfo={this.state.coupons}
@@ -706,4 +715,12 @@ class ScannedCodeCheck extends Component {
   }
 }
 
-export default ScannedCodeCheck;
+ScannedCodeCheck.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, {})(ScannedCodeCheck);

@@ -50,16 +50,20 @@ class Login extends Component {
     };
   }
 
+  componentWillMount() {
+    console.log(this.props.auth.isAuthenticated);
+    console.log(this.props);
+  }
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push(this.props.location.state.from.pathname);
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard"); // push user to dashboard when they login
+      this.props.history.push(this.props.location.state.from.pathname); // push user to dashboard when they login
     }
     if (nextProps.errors) {
       this.setState({
@@ -101,8 +105,15 @@ class Login extends Component {
               <div className="grey-text text-darken-1">
                 No tienes una cuenta?{" "}
                 <p>
-                  <Link className="text-light-orange" to="/register">
-                    Registrate gratis!
+                  <Link
+                    className="text-light-orange"
+                    to={{
+                      pathname: "/register",
+                      state: { from: this.props.location.state }
+                    }}
+                  >
+                    {" "}
+                    Registrate gratis!{" "}
                   </Link>
                 </p>
               </div>

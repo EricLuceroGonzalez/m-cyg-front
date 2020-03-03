@@ -17,13 +17,25 @@ import {
   faArrowAltCircleLeft,
   faPaperPlane
 } from "@fortawesome/free-solid-svg-icons";
+import apis from "../api";
 
 const fontType = {
   color: "#ff6a00",
   fontFamily: "Montserrat-BlackItalic"
 };
 class SendModal extends Component {
-  state = {};
+  state = { reviewAuth: "" };
+
+  componentDidMount() {
+    apis
+      .getReviewerAuth(this.props.reviwer)
+      .then(res => {
+        console.log(res.data);
+
+        this.setState({ reviewAuth: res.data.name.split(" ")[0] });
+      })
+      .catch(err => console.log(err));
+  }
 
   renderThumb = () => {
     if (this.props.thumy === "false") {
@@ -140,12 +152,21 @@ class SendModal extends Component {
         className="col-11 mr-auto ml-auto mt-5"
         style={{ fontSize: "0.75em" }}
       >
-        <ModalHeader toggle={this.props.toggleThis} style={fontType}>
-          Verifica!{" "}
+        <ModalHeader toggle={this.props.toggleThis}>
+          <div
+            style={{
+              color: "#ff6a00",
+              fontFamily: "Montserrat-BlackItalic",
+              fontSize: "0.6em"
+            }}
+          >
+            {this.state.reviewAuth}!,
+            <div>verifica tu comentario! </div>
           <FontAwesomeIcon
-            style={{ color: "rgb(1,156,246)" }}
+            style={{ color: "rgb(1,156,246)", fontSize: '0.75em' }}
             icon={faCertificate}
           ></FontAwesomeIcon>
+          </div>
         </ModalHeader>
         <ModalBody>
           <div
