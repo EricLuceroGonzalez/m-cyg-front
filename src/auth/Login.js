@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { CardImg } from "reactstrap";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
 import { Button } from "reactstrap";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/authActions";
+import theLogo from "../media/logo00.png";
 
 const formBg = {
   background: "rgba(250,250,250,1)",
@@ -90,6 +92,13 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div className="container">
+        <div className="col-4 col-md-2 mt-4 mb-3 ml-auto mr-auto">
+          <CardImg
+            alt="Card image cap....."
+            width="65%"
+            src={theLogo}
+          ></CardImg>
+        </div>
         <div style={{ marginTop: "4rem" }} className="row">
           <div
             className="col-10 col-md-8 col-lg-6 mr-auto ml-auto"
@@ -159,18 +168,22 @@ class Login extends Component {
                   {errors.passwordincorrect}
                 </span>
               </div>
-              <div className="container-login100-form-btn m-t-25 col-5 mr-auto ml-auto">
+              <div className="container-login100-form-btn m-t-25 col-10 mr-auto ml-auto">
                 <Button
-                  className="login100-form-btn text-title-white"
+                  className="login100-form-btn text-title-white nextBtn"
                   style={{
-                    borderRadius: "18px",
+                    borderRadius: "12px",
                     letterSpacing: "1.25px",
-                    marginTop: "2rem",
+                    marginTop: "4em",
                     fontSize: "0.85em"
                   }}
                   type="submit"
                 >
                   Entrar
+                  <span role="img" aria-label="star-dust">
+                  {" "}
+                  {"\u2728"}
+                </span>
                 </Button>
               </div>
             </form>

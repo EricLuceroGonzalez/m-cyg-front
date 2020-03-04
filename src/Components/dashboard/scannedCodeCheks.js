@@ -87,7 +87,7 @@ class ScannedCodeCheck extends Component {
         console.log(res.data);
         this.props.history.push({
           pathname: "/checkPrice",
-          state: { idCoup: this.state.coupons._id }
+          state: { idCoup: `${this.state.coupons._id} ${this.state.user}` }
         });
       })
       .catch(err => {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import apis from "../../api/index";
 import {
   CardImg,
@@ -17,6 +18,7 @@ import qrScanned from "../../media/Comentaygana-01.png";
 import "../../styles/main.css";
 import LoadingPage from "../LoadingPage";
 import theLogo from "../../media/Comentaygana-justWords.png";
+import Axios from "axios";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -35,23 +37,43 @@ const code = {
   fontFamily: "Montserrat-ExtraBold"
 };
 
-const cargo = 0.11;
-
 class PriceGood extends Component {
-  state = { coupons: "", product: "", modal: false };
+  state = {
+    coupons: "",
+    product: "",
+    modal: false,
+    scannedID: "",
+    reviewAuth: ""
+  };
 
   componentDidMount() {
-    //   `this.props.idCoup: ${this.props.idCoup.location.state.idCoup}`
-    // );
+    console.warn(this.props);
+    // const getCouponInfo = getCoupon(this.props.idCoup.location.state.idCoup.split(" ")[0])
+    // const getReviewInfo = getReviewerAuth(this.props.reviwer)
 
-    // .getCoupon(this.props.idCoup.location.state.idCoup)
-    // .getCoupon(this.props.match.params.id)
-    apis
-      .getCoupon(this.props.idCoup.location.state.idCoup)
-      .then(res => {
-        this.setState({ coupons: res.data, product: res.data.product });
-      })
-      .catch(err => `Get coupons for price: ${err}`);
+    // apis
+    //   .getCoupon(this.props.idCoup.location.state.idCoup.split(" ")[0])
+    //   .then(res => {
+    //     this.setState({ coupons: res.data, product: res.data.product });
+    //   })
+    //   .catch(err => `Get coupons for price: ${err}`);
+
+    axios
+      .all([
+        apis.getCoupon(this.props.idCoup.location.state.idCoup.split(" ")[0]),
+        apis.getReviewerAuth(
+          this.props.idCoup.location.state.idCoup.split(" ")[1]
+        )
+      ])
+      .then(resArr => {
+        console.log(resArr[0].data);
+        console.log(resArr[1].data);
+        this.setState({
+          coupons: resArr[0].data,
+          product: resArr[0].data.product,
+          reviewAuth: resArr[1].data.name.split(" ")[0]
+        });
+      });
   }
   handleIconClick = e => {
     e.preventDefault();
@@ -76,17 +98,21 @@ class PriceGood extends Component {
   };
 
   renderOfferCode() {
-    const lastFour = this.state.coupons._id.slice(-4);
-    const lastEight = this.state.coupons._id.slice(-8, -4);
+    let idCoupon = this.props.idCoup.location.state.idCoup
+      .split(" ")[0]
+      .slice(-4);
+    let idReview = this.props.idCoup.location.state.idCoup
+      .split(" ")[1]
+      .slice(-4);
 
     return (
       <div
         className="col-12 mr-auto ml-auto"
         style={{ textAlign: "center", margin: "16px auto" }}
       >
-        <span style={code}>{lastEight}</span>
+        <span style={code}>{idCoupon}</span>
         <span>-</span>
-        <span style={code}>{lastFour}</span>
+        <span style={code}>{idReview}</span>
       </div>
     );
   }
@@ -111,8 +137,7 @@ class PriceGood extends Component {
           $
           {(
             this.state.product.priceFinal +
-            this.state.product.priceOriginal * 0.07 +
-            cargo
+            this.state.product.priceOriginal * 0.07
           ).toFixed(2)}
         </span>
       );
@@ -122,7 +147,11 @@ class PriceGood extends Component {
   renderViewPort() {
     const height = window.innerHeight();
     const width = window.innerWidth();
-    return <p>{height} x {width}</p>
+    return (
+      <p>
+        {height} x {width}
+      </p>
+    );
   }
   render() {
     if (this.state.coupons === "") {
@@ -141,6 +170,7 @@ class PriceGood extends Component {
                 ¡Woow!
               </h1>
               <h2 className="text-title-orange">FE-LI-CI-DA-DES</h2>
+              <h4 className="text-title-orange">{this.state.reviewAuth}!</h4>
             </div>
 
             <div className="col-6 mt-4 ml-auto mr-auto">

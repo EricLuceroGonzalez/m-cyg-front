@@ -31,7 +31,6 @@ class SendModal extends Component {
       .getReviewerAuth(this.props.reviwer)
       .then(res => {
         console.log(res.data);
-
         this.setState({ reviewAuth: res.data.name.split(" ")[0] });
       })
       .catch(err => console.log(err));
