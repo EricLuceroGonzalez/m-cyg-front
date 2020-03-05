@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Label, CardImg, Form, Button, FormGroup } from "reactstrap";
 // import { Link } from "react-router-dom";
 import theLogo from "../../media/logo00.png";
+import axios from "axios";
 import apis from "../../api/index";
 import thumbUp from "../../media/comentaygana-10.png";
 import thumbDown from "../../media/comentaygana-10upside.png";
@@ -55,10 +56,17 @@ class ScannedCodeCheck extends Component {
 
   componentDidMount() {
     // console.log(`The id props: ${this.props.match.params.id}`);
-    apis
-      .getCoupon(this.props.match.params.id)
-      .then(res => {
-        this.setState({ coupons: res.data, questionA: res.data.questionA });
+
+    axios
+      .all([
+        apis.getCoupon(this.props.match.params.id),
+        apis.addThisScan(this.props.match.params.id)
+      ])
+      .then(resArr => {
+        this.setState({
+          coupons: resArr[0].data,
+          questionA: resArr[0].data.questionA
+        });
       })
       .catch(err => console.log(err));
   }
@@ -81,7 +89,8 @@ class ScannedCodeCheck extends Component {
         qAcheck: this.state.qACheck,
         qBcheck: this.state.qBCheck,
         thumb: this.state.thumb,
-        couponId: this.state.coupons._id
+        couponId: this.state.coupons._id,
+        reviewerId: this.state.user
       })
       .then(res => {
         console.log(res.data);
@@ -722,3 +731,35 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {})(ScannedCodeCheck);
+
+// user: " ",
+// scans: " ",
+// creationDate: " ",
+// condiciones: [" "],
+// direccion: [" "],
+// questionA: " ",
+// questionB: " ",
+// qr: " ",
+// cantidad: " ",
+// category: " ",
+// address: [" "],
+// offer: {
+//   expirationDate: " ",
+//   startingDate: " ",
+//   titulo: " ",
+//   description: {
+//     type: String,
+//     required: false,
+//     default: "description - default"
+//   }
+// },
+// product: {
+//   name: " ",
+//   description: " ",
+//   priceOriginal: " ",
+//   discount: " ",
+//   image: " ",
+//   priceFinal: " ",
+//   cost: " ",
+//   youSave: " "
+// }
