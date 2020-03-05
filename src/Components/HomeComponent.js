@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardImg } from "reactstrap";
 import qr from "../media/logo00.png";
-import Register from "../auth/Register";
-import Login from "../auth/Login";
-import PhoneInput from "../auth/PhoneIput";
 
 class Home extends Component {
   render() {

@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
-  padding: "10px 15px",
+  padding: "10px 5%",
   borderRadius: "16px",
   height: "100vh",
   maxHeight: "100vh",
@@ -175,7 +175,7 @@ class ScannedCodeCheck extends Component {
             >
               {this.renderQuestions("questionB")}
             </div>
-            <div className="mt-3">
+            <div className="mt-1">
               <Label
                 style={{
                   textAlign: "center",
@@ -435,9 +435,7 @@ class ScannedCodeCheck extends Component {
         </div>
       );
     } else {
-      this.setState({
-        modal: !this.state.modal
-      });
+      this.sendData();
     }
   };
 
@@ -668,7 +666,7 @@ class ScannedCodeCheck extends Component {
                 </div>
               </Label>
  */}
-              <div className="wrap-input100datos mt-3 mb-2">
+              <div className="wrap-input100datos mt-2">
                 <textarea
                   className="input100"
                   onChange={event => this.handleUserInput(event)}
@@ -683,7 +681,7 @@ class ScannedCodeCheck extends Component {
                 <span className="focus-input100"></span>
               </div>
             </FormGroup>
-            <div className="container-login100-form-btn mt-4 ml-auto mr-auto">
+            <div className="container-login100-form-btn ml-auto mr-auto">
               <Button
                 className="col-12 ml-auto mr-auto nextBtn"
                 onClick={this.toggleModal}

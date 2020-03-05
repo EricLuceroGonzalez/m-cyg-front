@@ -7,9 +7,9 @@ import ActivateQr from "./Components/activateQr";
 import Thumbs from "./Components/Thumbs";
 // import scannedPrice from "./Components/scannedPrice";
 import terminosYCond from "./Components/terminosYCond";
-import Win from "./Components/win";
+// import Win from "./Components/win";
 import ContactInfo from "./Components/ContactInfo";
-import QrReader from "./Components/qrReader";
+// import QrReader from "./Components/qrReader";
 import Home from "./Components/HomeComponent";
 // Auth Components
 import ScannedCodeCheck from "./Components/dashboard/scannedCodeCheks";

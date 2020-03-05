@@ -17,8 +17,7 @@ import qrScanned from "../../media/Comentaygana-01.png";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/main.css";
 import LoadingPage from "../LoadingPage";
-import theLogo from "../../media/Comentaygana-justWords.png";
-import Axios from "axios";
+import theLogo from "../../media/comentaygana02.png";
 
 const formBg = {
   backgroundColor: "rgba(222,222,222,0.35)",
@@ -48,15 +47,6 @@ class PriceGood extends Component {
 
   componentDidMount() {
     console.warn(this.props);
-    // const getCouponInfo = getCoupon(this.props.idCoup.location.state.idCoup.split(" ")[0])
-    // const getReviewInfo = getReviewerAuth(this.props.reviwer)
-
-    // apis
-    //   .getCoupon(this.props.idCoup.location.state.idCoup.split(" ")[0])
-    //   .then(res => {
-    //     this.setState({ coupons: res.data, product: res.data.product });
-    //   })
-    //   .catch(err => `Get coupons for price: ${err}`);
 
     axios
       .all([
@@ -170,7 +160,12 @@ class PriceGood extends Component {
                 ¡Woow!
               </h1>
               <h2 className="text-title-orange">FE-LI-CI-DA-DES</h2>
-              <h4 className="text-title-orange">{this.state.reviewAuth}!</h4>
+              <h4 className="text-title-orange">{this.state.reviewAuth}!
+              <span role="img" aria-label="taba-emoji">
+              {" "}
+              🎉
+            </span>
+              </h4>
             </div>
 
             <div className="col-6 mt-4 ml-auto mr-auto">
@@ -191,7 +186,11 @@ class PriceGood extends Component {
                   style={{ margin: "0px auto", textAlign: "center" }}
                   className="text-question"
                 >
-                  Ganaste un {this.renderDiscount()} de descuento😀
+                  Ganaste un {this.renderDiscount()} de descuento
+                  <span role="img" aria-label="smile-emoji">
+                  {" "}
+                  😀
+                </span>
                 </Label>
               </div>
 

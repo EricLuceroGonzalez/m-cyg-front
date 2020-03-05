@@ -12,7 +12,7 @@ class YesNoBtn extends Component {
       return (
         <FontAwesomeIcon
           className="ml-2"
-          style={{ color: "rgb(40,210,105)" }}
+          style={{ color: "rgb(40,210,105)", fontSize: '0.8em' }}
           icon={faCheckCircle}
         ></FontAwesomeIcon>
       );
@@ -24,8 +24,8 @@ class YesNoBtn extends Component {
     if (this.props.defaultCheck === "false") {
       return (
         <FontAwesomeIcon
-          style={{ color: "rgb(40,210,105)" }}
-          className="ml-2"
+          style={{ color: "rgb(40,210,105)", fontSize: '0.8em' }}
+          className="ml-1"
           icon={faCheckCircle}
         ></FontAwesomeIcon>
       );
@@ -37,11 +37,10 @@ class YesNoBtn extends Component {
     return (
       <div className="col-12 ml-auto mr-auto">
         <ButtonGroup className="col-12 ml-auto mr-auto mb-4">
-        <div className="col-2 ml-auto mr-auto"> </div>
           <Button
             value={true}
             onClick={e => this.props.wasClick(e)}
-            className={`mt-1 col-3 ${
+            className={`mt-1 col-4   ${
               this.state.qACheck ? "isClicked" : "notClicked"
             }`}
           >
@@ -52,13 +51,12 @@ class YesNoBtn extends Component {
             value={false}
             onClick={e => this.props.wasClick(e)}
             // className={btn_sel}
-            className={`mt-1 col-3 ${
+            className={`mt-1 col-4 ${
               this.state.qACheck ? "isClicked" : "notClicked"
             }`}
           >
             No{this.renderCheckIconN()}
           </Button>
-          <div className="col-2 ml-auto mr-auto"> </div>
         </ButtonGroup>
       </div>
     );
