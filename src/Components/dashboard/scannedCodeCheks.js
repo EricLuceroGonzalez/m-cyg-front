@@ -55,7 +55,7 @@ class ScannedCodeCheck extends Component {
   }
 
   componentDidMount() {
-    // console.log(`The id props: ${this.props.match.params.id}`);
+    console.log(`The id props: ${this.props.match.params.id}`);
 
     axios
       .all([
