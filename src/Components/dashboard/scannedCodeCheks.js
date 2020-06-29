@@ -56,11 +56,12 @@ class ScannedCodeCheck extends Component {
 
   componentDidMount() {
     console.log(`The id props: ${this.props.match.params.id}`);
+    console.log(`The user: ${this.props.auth.user.id}`);
 
     axios
       .all([
         apis.getCoupon(this.props.match.params.id),
-        apis.addThisScan(this.props.match.params.id)
+        apis.addThisScan(this.props.match.params.id,this.props.auth.user.id)
       ])
       .then(resArr => {
         this.setState({

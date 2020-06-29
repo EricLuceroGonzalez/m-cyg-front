@@ -17,7 +17,7 @@ export const postCouponComment = content => api.post("/aComment", content);
 export const postRegister = usrData => api.post("/user/register", usrData);
 export const postLogin = usrData => api.post("/user/login", usrData);
 export const getReviewerAuth = theID => api.get(`/revAuth/${theID}`);
-export const addThisScan = theId => api.put(`/addScan/${theId}`);
+export const addThisScan = (idA,idB) => api.put(`/addScan/?a=${idA}&b=${idB}`);
 
 const apis = {
   getAllComments,
