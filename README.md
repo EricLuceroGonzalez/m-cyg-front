@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🌟 m-cyg-front: Frontend de la Aplicación M-CYG
 
-## Available Scripts
+[![Estado del Proyecto](https://img.shields.io/badge/Estado-Cerrado-yellow)](https://github.com/EricLuceroGonzalez/m-cyg-front)
 
-In the project directory, you can run:
+## 📝 Descripción del Proyecto
 
-### `npm start`
+Este es el repositorio del **frontend (interfaz de usuario)** principal para la aplicación **M-CYG**. Está dedicado a la lógica de presentación y la interacción del usuario, comunicándose con un backend a través de APIs.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🚀 Tecnologías Clave
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* **Framework:** ReacJs
+* **Lenguaje:** JavaScript / TypeScript
+* **Estilos:** CSS
+* **Gestor de Paquetes:** npm
 
-### `npm test`
+## ⚙️ Instalación y Configuración
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerrequisitos
 
-### `npm run build`
+* Node.js y npm (o yarn).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pasos de Instalación
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1.  **Clonar el Repositorio:**
+    ```bash
+    git clone [https://github.com/EricLuceroGonzalez/m-cyg-front.git](https://github.com/EricLuceroGonzalez/m-cyg-front.git)
+    cd m-cyg-front
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2.  **Instalar Dependencias:**
+    ```bash
+    npm install
+    # o: yarn install
+    ```
 
-### `npm run eject`
+3.  **Configuración de API (Opcional):**
+    * Crea un archivo de entorno (`.env`) para configurar la URL del backend (`cyg-backend`).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Ejecución del Proyecto
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+# o: yarn dev
+```
+## 🤝 Contribución
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Aunque este es un repositorio de portfolio personal, si encuentras algún error (typo, problema de diseño, etc.), ¡siéntete libre de abrir un *Issue* o enviar un *Pull Request*!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.  Haz un `fork` del repositorio.
+2.  Crea una nueva rama (`git checkout -b feature/nueva-seccion`).
+3.  Realiza tus cambios y haz `commit` (`git commit -m 'feat: Añadir nueva sección de contacto'`).
+4.  Empuja tus cambios (`git push origin feature/nueva-seccion`).
+5.  Abre un `Pull Request`.
 
-## Learn More
+## ✍️ Autor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* **Eric Lucero González** - [GitHub](https://github.com/EricLuceroGonzalez)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📄 Licencia
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Este proyecto se distribuye bajo la Licencia **MIT**.
